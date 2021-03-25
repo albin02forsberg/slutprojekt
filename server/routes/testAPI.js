@@ -2,8 +2,7 @@ let express = require("express");
 let router = express.Router();
 
 router.get("/", function(req, res, next){
-    console.log("test");
-    res.send(req.body.name);
+    res.send("API is working!");
 });
 
 router.post("/", function(req,res){

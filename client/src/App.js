@@ -1,54 +1,126 @@
-import React from 'react';
+import React, { useState, useEffect } from "react";
 import axios from "axios";
-import logo from './logo.svg';
-import './App.css';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  useRouteMatch,
+  useParams
+} from "react-router-dom";
 
-class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { name: "" };
-  }
-
-  handleInputChange = e => {
-    this.setState({
-      [e.target.name]: e.target.value,
-    });
-  };
-
-  handleSubmit = e => {
-    e.preventDefault();
-
-    const name = this.state;
-
-    axios
-      .post('http://localhost:3001/testAPI', name)
-      .then(() => document.getElementById("name").nodeValue = "")
-      .catch(err => {
-        console.error(err);
-      });
-  };
-
-
-  render() {
-    return (
-      <div className="App">
-        <h1>{this.state.apiResponse}</h1>
-
-        <form onSubmit={this.handleSubmit}>
-          <label>
-            Name
-            </label>
-          <input type="text" id="name" name="name" onChange={this.handleInputChange}></input>
-
-          <button>
-            Sumbit
-            </button>
-        </form>
-
-        <h1>{this.state.name}</h1>
+export default function App() {
+  return (
+    <Router>
+      <nav class="navbar navbar-expand-xl navbar-light bg-light">
+        <div class="container-fluid">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo1" aria-controls="navbarTogglerDemo1" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse show" id="navbarTogglerDemo1">
+            <a class="navbar-brand" href="/">Coach Network</a>
+            <ul class="navbar-nav me-auto mb-2 mb-xl-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="/">Feed</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="/createex">Exercise creator</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="/trainingplanner">Training planner</a>
+              </li>
+            </ul>
+            <form class="d-flex">
+              <ul class="navbar-nav me-auto mb-2 mb-xl-0">
+                <li class="nav-item">
+                  <a class="nav-link" href="/login">Login</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/signup">signup</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/account">My account</a>
+                </li>
+              </ul>
+            </form>
+          </div>
+        </div>
+      </nav>
+      <div>
+        <Switch>
+          <Route path="/login">
+            <Login />
+          </Route>
+          <Route path="/signup">
+            <Signup />
+          </Route>
+          <Route path="/">
+            <Home />
+          </Route>
+        </Switch>
       </div>
-    );
-  }
+    </Router>
+  );
 }
 
-export default App;
+function Home() {
+
+  const [test, testSet] = useState("");
+
+  useEffect(() => {
+    axios.get('http://localhost:3001/testAPI')
+      .then(function (response) {
+        // handle success
+        testSet(response.data);
+        console.log(response)
+      })
+      .catch(function (error) {
+        // handle error
+        console.log(error);
+      })
+  }, [])
+
+  return (
+    <div class="container">
+      <div class="col-md-12">
+        <h1>{test}</h1>
+      </div>
+    </div>
+  );
+}
+
+function Login() {
+  return (
+    <div class="container">
+      <div class="col-md-12">
+        <h1>Login</h1>
+      </div>
+    </div>
+  );
+}
+
+function Signup() {
+  return (
+    <div class="container">
+      <div class="col-md-12">
+        <h1>Signup</h1>
+      </div>
+      <div class="col-md-6">
+        <form>
+          <lable class="form-lable" >Name</lable>
+          <input type="text" class="form-control" id="name" name="name" required placeholder="Name"></input>
+          <lable class="form-lable" >Username</lable>
+          <input type="text" class="form-control" id="username" name="username" required placeholder="Username"></input>
+          <lable class="form-lable">Mail</lable>
+          <input type="email" class="form-control" id="mail" name="mail" required placeholder="Mail"></input>
+          <lable class="form-lable">Password</lable>
+          <input type="password" class="form-control" id="password1" name="password1" required placeholder="password"></input>
+          <lable class="form-lable">Confirm password</lable>
+          <input type="password" class="form-control" id="password2" name="password2" required placeholder="Confirm password"></input>
+          <br></br>
+          <button class="btn btn-success">Submit</button>
+        </form>
+      </div>
+    </div>
+  );
+}
