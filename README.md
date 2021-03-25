@@ -6,19 +6,19 @@ To run the project Node.js must be installed. You can find the installer [here](
 
 To start the client run the commands below. 
 
-´´´console
+```console
 cd client
 npm install
 npm start
-´´´
+```
 
 To start the server
 
-´´´console
+```console
 cd server
 npm install
 npm start
-´´´
+```
 
 npm install is only first time when installing dependencies.
 
