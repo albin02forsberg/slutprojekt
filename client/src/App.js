@@ -93,8 +93,7 @@ function Home() {
   const [test, testSet] = useState("");
 
   useEffect(() => {
-    axios
-      .get("http://localhost:3001/testAPI")
+    axios.get("http://localhost:3001/testAPI")
       .then(function (response) {
         // handle success
         testSet(response.data);
@@ -102,6 +101,7 @@ function Home() {
       })
       .catch(function (error) {
         // handle error
+        testSet(error.data);
         console.log(error);
       });
   }, []);
@@ -118,8 +118,13 @@ function Home() {
 function Login() {
   return (
     <div class="container">
-      <div class="col-md-12">
-        <h1>Login</h1>
+      <div class="row">
+        <div class="col-md-12">
+          <h1>Login</h1>
+        </div>
+        <div class="col-md-12 message">
+          <p>Test</p>
+        </div>
       </div>
     </div>
   );
@@ -132,6 +137,9 @@ function test() {
   let password1 = document.getElementById("password1").value;
   let password2 = document.getElementById("password2").value;
 
+  let messageBox = document.getElementById("message");
+  let message = "";
+
   let user = {
     name: name,
     username: username,
@@ -140,7 +148,16 @@ function test() {
     password2: password2
   }
 
-  // Send get request to server for validation
+  if(password1 != password2){
+    message += "<p> Passwords don't match </p>"
+  } 
+  if (mail != "albin") {
+    message += "<p>A account is already associated with that email </p>"
+  }
+
+  messageBox.innerHTML = message;
+
+  // Send get request to server for validation of username and email
 
   axios.get("http://localhost:3001/testAPI")
     .then(res => {
@@ -155,59 +172,64 @@ function test() {
 function Signup() {
   return (
     <div class="container">
-      <div class="col-md-12">
-        <h1>Signup</h1>
-      </div>
-      <div class="col-md-6">
-        <lable class="form-lable">Name</lable>
-        <input
-          type="text"
-          class="form-control"
-          id="name"
-          name="name"
-          required
-          placeholder="Name"
-        ></input>
-        <lable class="form-lable">Username</lable>
-        <input
-          type="text"
-          class="form-control"
-          id="username"
-          name="username"
-          required
-          placeholder="Username"
-        ></input>
-        <lable class="form-lable">Mail</lable>
-        <input
-          type="email"
-          class="form-control"
-          id="mail"
-          name="mail"
-          required
-          placeholder="Mail"
-        ></input>
-        <lable class="form-lable">Password</lable>
-        <input
-          type="password"
-          class="form-control"
-          id="password1"
-          name="password1"
-          required
-          placeholder="password"
-        ></input>
-        <lable class="form-lable">Confirm password</lable>
-        <input
-          type="password"
-          class="form-control"
-          id="password2"
-          name="password2"
-          required
-          placeholder="Confirm password"
-        ></input>
-        <br></br>
-        <button class="btn btn-success" onClick={test}>
-          Submit
-        </button>
+      <div class="row">
+        <div class="col-md-12">
+          <h1>Signup</h1>
+        </div>
+        <div class="col-md-6">
+          <lable class="form-lable">Name</lable>
+          <input
+            type="text"
+            class="form-control"
+            id="name"
+            name="name"
+            required
+            placeholder="Name"
+          ></input>
+          <lable class="form-lable">Username</lable>
+          <input
+            type="text"
+            class="form-control"
+            id="username"
+            name="username"
+            required
+            placeholder="Username"
+          ></input>
+          <lable class="form-lable">Mail</lable>
+          <input
+            type="email"
+            class="form-control"
+            id="mail"
+            name="mail"
+            required
+            placeholder="Mail"
+          ></input>
+          <lable class="form-lable">Password</lable>
+          <input
+            type="password"
+            class="form-control"
+            id="password1"
+            name="password1"
+            required
+            placeholder="password"
+          ></input>
+          <lable class="form-lable">Confirm password</lable>
+          <input
+            type="password"
+            class="form-control"
+            id="password2"
+            name="password2"
+            required
+            placeholder="Confirm password"
+          ></input>
+          <br></br>
+          <button class="btn btn-success" onClick={test}>
+            Submit
+          </button>
+        </div>
+        <div class="col-md-6" id="message">
+            
+        </div>
       </div>
     </div>
   );

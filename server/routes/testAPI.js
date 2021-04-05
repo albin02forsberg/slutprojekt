@@ -8,7 +8,7 @@ router.get("/", function(req, res, next) {
         mail: "testmail"
     }
 
-    res.send(user);
+    res.send("Api is working");
 });
 
 router.post("/", function(req, res) {
