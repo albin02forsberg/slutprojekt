@@ -3,3 +3,11 @@
 ## 31/3 - 21
 
 Påbörjade wireframe till startsidan. Fortsatte också med målgruppsanalysen.
+
+## 06/4 - 21
+
+Organiserade filerna i client projektet. 
+
+## 06/4 - 20
+
+Påbörjade implementation av startsidans wireframe, lade även till sessionstorage för user id när det väl ska implementeras.

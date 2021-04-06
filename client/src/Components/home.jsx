@@ -1,29 +1,35 @@
 import react, {useState, useEffect} from "react";
 import axios from "axios";
-import "../App.css";
+import "../static/App.css";
+import Excercise from "../Components/excercise"
+
 
 function Home() {
-  const [test, testSet] = useState("");
+  const [apiTest, setAPItest] = useState("");
 
   useEffect(() => {
     axios
       .get("http://localhost:3001/testAPI")
       .then(function (response) {
         // handle success
-        testSet(response.data);
+        setAPItest(response.data);
         console.log(response);
       })
       .catch(function (error) {
         // handle error
-        testSet(error.data);
+        setAPItest(error.data);
         console.log(error);
       });
   }, []);
 
   return (
-    <div>
-      <div> 
-        <h1>Welcome! {test}</h1>
+    <div className="container">
+      <div className="main"> 
+        <h1>Övningar</h1>
+        <Excercise name="test" focus="Focus" user="User"/>
+      </div>
+      <div className="main"> 
+        <h1>Träningspass</h1>
       </div>
     </div>
   );

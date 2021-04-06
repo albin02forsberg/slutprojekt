@@ -1,0 +1,86 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --primary: #005293;
+    --secondary: #f9f9f9;
+    --accent-yellow: #fed226;
+    --accent-light-blue: #62b8e7;
+    --accent-dark-blue: #00345c;
+}
+
+.content {
+    display: flex;
+    background-color: var(--secondary);
+}
+
+
+/* Header and navigation */
+
+.header {
+    width: 15vw;
+    min-height: 100vh;
+    background-color: var(--primary);
+}
+
+.bannerName {
+    text-align: center;
+    padding: 20px;
+}
+
+.bannerName a {
+    text-decoration: none;
+    color: var(--accent-yellow);
+}
+
+.nav-links .nav-list .nav-link {
+    text-align: center;
+}
+
+.nav-links .nav-list .nav-link a {
+    color: black;
+    text-decoration: none;
+}
+
+a button {
+    width: 90%;
+    height: 5vh;
+    margin: 10px;
+    background-color: var(--accent-yellow);
+    color: var(--primary);
+    border: 0px;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+
+/* Main content */
+
+.container {
+    width: 100vw;
+    margin: 10px;
+    display: flex;
+}
+
+.main {
+    width: 50%;
+    margin: 10px;
+    border-radius: 5px;
+    background-color: var(--primary);
+}
+
+.main h1 {
+    text-align: center;
+    padding: 10px;
+    color: var(--accent-yellow);
+}
+
+
+/* Excercise component */
+
+.row {
+    display: flex;
+    align-content: space-around;
+}

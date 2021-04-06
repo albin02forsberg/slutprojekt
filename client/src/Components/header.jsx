@@ -1,4 +1,6 @@
-import react, { useState } from "react";
+import react, { useState, useEffect } from "react";
+import "../static/App.css";
+import IsLoggedin from "../Components/menuBtnsLogin"
 import {
   BrowserRouter as Router,
   Switch,
@@ -8,45 +10,54 @@ import {
   useParams,
 } from "react-router-dom";
 
+let login = false;
+
 function Header() {
-  const [username, setUsername] = useState("Account");
+  const [username, setUsername] = useState(sessionStorage.getItem("User"));
+
+  if (username.length < 10) {
+    login = false;
+  }
+
+  console.log(login);
+
   return (
-    <div>
+    <div className="header">
       <nav className="nav">
         <div className="banner">
           <h1 className="bannerName">
-            <Link to="/">Coach Network</Link>
+            <Link to="/">Titel</Link>
           </h1>
         </div>
         <div className="nav-links">
           <ul className="nav-list">
             <li className="nav-link">
-              <Link to="/">Feed</Link>
+              <Link to="/">
+                <button>Flöde</button>
+              </Link>
             </li>
             <li className="nav-link">
-              <Link to="/excercise">Excercise creator</Link>
+              <Link to="/excercise">
+                <button>Övningsskaparen</button>
+              </Link>
             </li>
             <li className="nav-link">
-              <Link to="/trainingplanner">Training planner</Link>
+              <Link to="/trainingplanner">
+                <button>Träningsplanerare</button>
+              </Link>
             </li>
           </ul>
         </div>
+        <h2 className="bannerName">
+          <Link>Konto</Link>
+        </h2>
         <div className="nav-links">
-          <ul className="nav-list">
-            <li className="nav-link">
-              <Link to="/login">Login</Link>
-            </li>
-            <li className="nav-link">
-              <Link to="/signup">Sign up</Link>
-            </li>
-            <li className="nav-link">
-              <Link to="/account">{username}</Link>
-            </li>
-          </ul>
+            <IsLoggedin/>
         </div>
       </nav>
     </div>
   );
 }
+
 
 export default Header;

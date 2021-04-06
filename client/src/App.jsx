@@ -17,23 +17,30 @@ import Login from "./Components/login";
 import Header from "./Components/header";
 
 export default function App() {
+  if (sessionStorage.getItem("User") == null) {
+    sessionStorage.setItem("User", "Account");
+  } else {
+    console.log("Userid: " + sessionStorage.getItem("User"))
+  }
+
   return (
-    <Router>
-      {/* Inserting header */}
-      <Header />
-      {/* Setting up routes */}
-      <Switch>
-        <Route path="/login">
-          <Login />
-        </Route>
-        <Route path="/signup">
-          <Singup />
-        </Route>
-        <Route path="/">
-          <Home />
-        </Route>
-      </Switch>
-    </Router>
+    <div className="content">
+      <Router>
+        {/* Inserting header */}
+        <Header />
+        {/* Setting up routes */}
+        <Switch>
+          <Route path="/login">
+            <Login />
+          </Route>
+          <Route path="/signup">
+            <Singup />
+          </Route>
+          <Route path="/">
+            <Home />
+          </Route>
+        </Switch>
+      </Router>
+    </div>
   );
 }
-
