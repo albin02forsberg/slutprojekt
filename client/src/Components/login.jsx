@@ -2,12 +2,12 @@ import react from "react";
 
 function Login() {
   return (
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12">
+    <div>
+      <div>
+        <div>
           <h1>Login</h1>
         </div>
-        <div class="col-md-12 message">
+        <div>
           <p>Test</p>
         </div>
       </div>

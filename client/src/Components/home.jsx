@@ -21,9 +21,9 @@ function Home() {
   }, []);
 
   return (
-    <div class="container">
-      <div className="red">
-        <h1 className="red"> {test}</h1>
+    <div>
+      <div> 
+        <h1>Welcome! {test}</h1>
       </div>
     </div>
   );
