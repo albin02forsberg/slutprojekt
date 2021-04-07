@@ -1,15 +1,14 @@
 import react from "react";
-import "../static/App.css"
+import "../static/App.css";
 
 function Excercise(prop) {
   return (
-    <div className="excercise">
-      <div className="row">
-        <div>{prop.name}</div>
-        <div>{prop.focus}</div>
-        <div>{prop.user}</div>
-      </div>
-    </div>
+    <tr>
+      <td>{prop.name}</td>
+      <td>{prop.focus}</td>
+      <td>{prop.user}</td>
+      <td>{toString(Date)}</td>
+    </tr>
   );
 }
 

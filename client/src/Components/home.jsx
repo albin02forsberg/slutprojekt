@@ -1,11 +1,11 @@
-import react, {useState, useEffect} from "react";
+import react, { useState, useEffect } from "react";
 import axios from "axios";
 import "../static/App.css";
-import Excercise from "../Components/excercise"
-
+import Excercise from "../Components/excercise";
 
 function Home() {
   const [apiTest, setAPItest] = useState("");
+  const [display, setDisplay] = useState("Excercise");
 
   useEffect(() => {
     axios
@@ -23,16 +23,20 @@ function Home() {
   }, []);
 
   return (
-    <div className="container">
-      <div className="main"> 
-        <h1>Övningar</h1>
-        <Excercise name="test" focus="Focus" user="User"/>
+    <div className="main">
+      <div className="buttons">
+        <button onClick={()=>{
+          setDisplay("Excersice")
+        }}>Övningar</button>
+        <button onClick={()=>{
+          setDisplay("Training")
+        }}>Träningspass</button>
       </div>
-      <div className="main"> 
-        <h1>Träningspass</h1>
+      <div className="display">
+        <p>{display}</p>
       </div>
     </div>
   );
-} 
+}
 
 export default Home;

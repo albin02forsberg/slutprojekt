@@ -4,23 +4,48 @@
 }
 
 :root {
-    --primary: #005293;
+    /* --primary: #005293;
     --secondary: #f9f9f9;
     --accent-yellow: #fed226;
     --accent-light-blue: #62b8e7;
+    --accent-dark-blue: #00345c; */
+    --primary: #373e49;
+    --secondary: #f9f9f9;
+    --accent-yellow: #f9f9f9;
+    --accent-light-blue: #77878b;
     --accent-dark-blue: #00345c;
+    --accent-lightlight-blue: #b7d5d4;
+    --accent-light-green: #488286;
+}
+
+
+/* Default stuff */
+
+button {
+    height: 5vh;
+    margin: 10px;
+    background-color: var(--accent-light-blue);
+    color: var(--secondary);
+    border: 0px;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.selected {
+    background-color: var(--accent-lightlight-blue);
+    color: black;
 }
 
 .content {
     display: flex;
-    background-color: var(--secondary);
+    background-color: var(--accent-lightlight-blue);
 }
 
 
 /* Header and navigation */
 
 .header {
-    width: 15vw;
+    width: 20%;
     min-height: 100vh;
     background-color: var(--primary);
 }
@@ -46,13 +71,6 @@
 
 a button {
     width: 90%;
-    height: 5vh;
-    margin: 10px;
-    background-color: var(--accent-yellow);
-    color: var(--primary);
-    border: 0px;
-    border-radius: 5px;
-    font-size: 1rem;
 }
 
 
@@ -65,7 +83,9 @@ a button {
 }
 
 .main {
-    width: 50%;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
     margin: 10px;
     border-radius: 5px;
     background-color: var(--primary);
@@ -77,10 +97,41 @@ a button {
     color: var(--accent-yellow);
 }
 
+.buttons {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.buttons button {
+    width: 50%;
+}
+
+.display {
+    background-color: var(--secondary);
+    margin: 15px;
+    border-radius: 5px;
+    height: 100%;
+    border: 2px solid var(--accent-light-green);
+    padding: 10px;
+}
+
 
 /* Excercise component */
 
 .row {
     display: flex;
     align-content: space-around;
+}
+
+table {
+    width: 90%;
+    border-collapse: collapse;
+}
+
+td,
+th {
+    text-align: left;
+    border-collapse: collapse;
+    padding: 5px;
+    background-color: var(--accent-light-blue);
 }
