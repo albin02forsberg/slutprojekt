@@ -5,7 +5,7 @@ import Excercise from "../Components/excercise";
 
 function Home() {
   const [apiTest, setAPItest] = useState("");
-  const [display, setDisplay] = useState("Excercise");
+  const [display, setDisplay] = useState("Övningar");
 
   useEffect(() => {
     axios
@@ -24,19 +24,27 @@ function Home() {
 
   return (
     <div className="main">
+      <h1>Flöde</h1>
       <div className="buttons">
-        <button onClick={()=>{
-          setDisplay("Excersice")
+        <button id="btn-ex" onClick={()=>{
+          setDisplay("Övningar")
         }}>Övningar</button>
-        <button onClick={()=>{
-          setDisplay("Training")
+        <button id="btn-train" onClick={()=>{
+          setDisplay("Träningspass")
         }}>Träningspass</button>
       </div>
       <div className="display">
-        <p>{display}</p>
+        <Test name={display}/>
       </div>
     </div>
   );
+}
+
+function Test(props){
+  
+  return(
+    <h2>{props.name}</h2>
+  )
 }
 
 export default Home;

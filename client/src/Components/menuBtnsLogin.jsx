@@ -9,7 +9,7 @@ import {
 } from "react-router-dom";
 
 function IsLoggedin() {
-  if (sessionStorage.getItem("User") == "Account") {
+  if (sessionStorage.getItem("User") == "null") {
     return (
       <ul className="nav-list">
         <li className="nav-link">

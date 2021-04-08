@@ -18,7 +18,7 @@ import Header from "./Components/header";
 
 export default function App() {
   if (sessionStorage.getItem("User") == null) {
-    sessionStorage.setItem("User", "Account");
+    sessionStorage.setItem("User", null);
   } else {
     console.log("Userid: " + sessionStorage.getItem("User"))
   }

@@ -1,6 +1,6 @@
 import react, { useState, useEffect } from "react";
 import "../static/App.css";
-import IsLoggedin from "../Components/menuBtnsLogin"
+import IsLoggedin from "../Components/menuBtnsLogin";
 import {
   BrowserRouter as Router,
   Switch,
@@ -14,15 +14,28 @@ let login = false;
 
 function Header() {
   const [username, setUsername] = useState(sessionStorage.getItem("User"));
+  const [show, setShow] = useState("show");
+  const [btnText, setBtnText] = useState("Hide");
 
   if (username.length < 10) {
     login = false;
   }
 
-  console.log(login);
+  useEffect(() => {
+    if (show == "show") {
+      setBtnText("Hide");
+    } else {
+      setBtnText("Show");
+    }
+    return () => {
+      console.log("Nav toggled");
+    };
+  }, [show]);
+
+  let className = show + " header";
 
   return (
-    <div className="header">
+    <div className={className}>
       <nav className="nav">
         <div className="banner">
           <h1 className="bannerName">
@@ -52,12 +65,26 @@ function Header() {
           <Link>Konto</Link>
         </h2>
         <div className="nav-links">
-            <IsLoggedin/>
+          <IsLoggedin />
         </div>
       </nav>
+
+      <button
+        id="btnShow"
+        onClick={() => {
+          if ( btnText  == "Show") {
+            setBtnText("Hide");
+            setShow("show")
+          } else {
+            setShow("hide")
+            setBtnText("Show");
+          }
+        }}
+      >
+        {btnText}
+      </button>
     </div>
   );
 }
-
 
 export default Header;

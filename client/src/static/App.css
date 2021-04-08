@@ -4,18 +4,18 @@
 }
 
 :root {
-    /* --primary: #005293;
+    --primary: #005293;
     --secondary: #f9f9f9;
     --accent-yellow: #fed226;
     --accent-light-blue: #62b8e7;
-    --accent-dark-blue: #00345c; */
-    --primary: #373e49;
+    --accent-dark-blue: #00345c;
+    /* --primary: #373e49;
     --secondary: #f9f9f9;
     --accent-yellow: #f9f9f9;
     --accent-light-blue: #77878b;
     --accent-dark-blue: #00345c;
     --accent-lightlight-blue: #b7d5d4;
-    --accent-light-green: #488286;
+    --accent-light-green: #488286; */
 }
 
 
@@ -24,9 +24,9 @@
 button {
     height: 5vh;
     margin: 10px;
-    background-color: var(--accent-light-blue);
-    color: var(--secondary);
-    border: 0px;
+    background-color: var(--primary);
+    color: var(--accent-yellow);
+    border: 1px solid var(--accent-yellow);
     border-radius: 5px;
     font-size: 1rem;
 }
@@ -47,7 +47,11 @@ button {
 .header {
     width: 20%;
     min-height: 100vh;
-    background-color: var(--primary);
+    animation: 0.2s showNav;
+    background-color: var(--accent-dark-blue);
+    position: fixed;
+    z-index: inherit;
+    border-right: 2px solid var(--accent-yellow);
 }
 
 .bannerName {
@@ -73,22 +77,63 @@ a button {
     width: 90%;
 }
 
+.hide {
+    animation: 0.2s hideNav;
+    animation-fill-mode: forwards;
+    border: 0px;
+}
+
+.hide>* {
+    display: none;
+}
+
+#btnShow {
+    position: fixed;
+    display: block !important;
+    width: 50px;
+    top: 90vh;
+    left: 20px;
+}
+
+@keyframes hideNav {
+    to {
+        width: 0%;
+    }
+}
+
+@keyframes showNav {
+    from {
+        width: 0%;
+    }
+    to {
+        width: 20%;
+    }
+}
+
 
 /* Main content */
 
 .container {
     width: 100vw;
     margin: 10px;
-    display: flex;
+    display: block;
+    position: relative;
 }
 
 .main {
     display: flex;
     flex-direction: column;
     width: 100%;
-    margin: 10px;
-    border-radius: 5px;
-    background-color: var(--primary);
+    padding: 0 5% 0 5%;
+    min-height: 100vh;
+    background-color: var(--accent-dark-blue);
+    animation: 0.2s show;
+}
+
+@keyframes show {
+    from {
+        width: 0%;
+    }
 }
 
 .main h1 {
@@ -97,17 +142,20 @@ a button {
     color: var(--accent-yellow);
 }
 
+.main h2 {
+    color: var(--accent-yellow)
+}
+
 .buttons {
     display: flex;
-    justify-content: space-evenly;
 }
 
 .buttons button {
-    width: 50%;
+    width: 30%;
 }
 
 .display {
-    background-color: var(--secondary);
+    background-color: var(--primary);
     margin: 15px;
     border-radius: 5px;
     height: 100%;
