@@ -6,9 +6,11 @@ let logger = require('morgan');
 let cors = require("cors");
 let mongoose = require("mongoose");
 
+let user = require("./models/user");
+
 let indexRouter = require('./routes/index');
 let usersRouter = require('./routes/users');
-let testAPIRouter = require("./routes/testAPI")
+let apiRouter = require("./routes/api")
 
 let app = express();
 
@@ -31,7 +33,17 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.use("/testAPI", testAPIRouter);
+app.use("/api", apiRouter);
+
+
+// Database
+
+// let database = "mongodb://localhost:27017/slutprojekt";
+let database = "mongodb+srv://user:d0BsBDPan1TP5f5I@cluster0.5aqbo.mongodb.net/slutprojekt?retryWrites=true&w=majority"
+mongoose.connect(database, { useNewUrlParser: true, useUnifiedTopology: true });
+let db = mongoose.connection;
+
+db.on("error", console.error.bind(console, "MongoDB connection error: "));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
