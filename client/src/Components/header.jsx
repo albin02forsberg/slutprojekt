@@ -14,7 +14,7 @@ let login = false;
 
 function Header() {
   const [username, setUsername] = useState(sessionStorage.getItem("User"));
-  const [show, setShow] = useState("show");
+  const [show, setShow] = useState("hide");
   const [btnText, setBtnText] = useState("Hide");
 
   if (username.length < 10) {
@@ -46,17 +46,17 @@ function Header() {
           <ul className="nav-list">
             <li className="nav-link">
               <Link to="/">
-                <button>Flöde</button>
+                <button onClick={() => setShow("hide")}>Flöde</button>
               </Link>
             </li>
             <li className="nav-link">
               <Link to="/excercise">
-                <button>Övningsskaparen</button>
+                <button onClick={() => setShow("hide")}>Övningsskaparen</button>
               </Link>
             </li>
             <li className="nav-link">
               <Link to="/trainingplanner">
-                <button>Träningsplanerare</button>
+                <button onClick={() => setShow("hide")}>Träningsplanerare</button>
               </Link>
             </li>
           </ul>
