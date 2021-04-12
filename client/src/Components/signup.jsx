@@ -109,9 +109,7 @@ function Singup() {
             Sign up
           </button>
         </form>
-        <div id="information">
-
-        </div>
+        <div id="information"></div>
       </div>
     </div>
   );
@@ -149,7 +147,6 @@ function sendUser(user) {
           },
         })
         .then(function (response) {
-          console.log(response);
           if (response.data == "Ok!") {
             mail = true;
             console.log(mail);
@@ -158,34 +155,27 @@ function sendUser(user) {
             console.log(mail);
           }
         })
-    )
-    .then(() => {
-      if (mail && username) {
-        //   Send user to server and db
-        axios
-          .post("http://localhost:3001/api/createuser", user)
-          .then(function (res) {
-            console.log(res);
-            document.getElementById("information").innerHTML = "<p>Account created</p>";
-          })
-          .catch(function (error) {
-            console.log(error);
-          });
-      } else {
+        .then(() => {
           let message = "";
-          if(!mail){
-              message += "<p>Invalid mail</p>"
+          if (mail && username) {
+            //   Send user to server and db
+            axios.post("http://localhost:3001/api/createuser", user);
+            console.log("Test");
+            document.getElementById("information").innerHTML =
+              "<p>Account created</p>";
+          } else {
+            message = "";
+            if (!mail) {
+              message += "<p>Invalid mail</p>";
+            }
+            if (!username) {
+              message += "<p>Invalid username</p>";
+            }
+            document.getElementById("information").innerHTML = message;
+            console.log("ERROR when creating new user");
           }
-          if(!username){
-              message += "<p>Invalid username</p>"
-          }
-          document.getElementById("information").innerHTML = message;
-        console.log("ERROR when creating new user");
-      }
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
+        })
+    );
 }
 
 export default Singup;

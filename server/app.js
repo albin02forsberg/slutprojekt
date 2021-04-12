@@ -35,9 +35,7 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use("/api", apiRouter);
 
-
 // Database
-
 // let database = "mongodb://localhost:27017/slutprojekt";
 let database = "mongodb+srv://user:d0BsBDPan1TP5f5I@cluster0.5aqbo.mongodb.net/slutprojekt?retryWrites=true&w=majority"
 mongoose.connect(database, { useNewUrlParser: true, useUnifiedTopology: true });

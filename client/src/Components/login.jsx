@@ -1,6 +1,7 @@
 import axios from "axios";
 import react, { useState } from "react";
 import { Redirect } from "react-router";
+import home from "./home";
 
 import {
   BrowserRouter as Router,
@@ -9,15 +10,11 @@ import {
   Link,
   useRouteMatch,
   useParams,
-} from "react-router-dom"
+} from "react-router-dom";
 
 function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-
-if(sessionStorage.getItem("User") != "null"){
-  <Redirect to="/"/>
-}
 
   let user = {
     username: username,
@@ -44,7 +41,7 @@ if(sessionStorage.getItem("User") != "null"){
     <div className="main">
       <h1>Login</h1>
       <div className="display">
-        <form>
+        <form method="post" action="/">
           <table>
             <tr>
               <td>
@@ -79,6 +76,7 @@ if(sessionStorage.getItem("User") != "null"){
             type="button"
             onClick={() => {
               userLogin(user);
+              <Redirect to="/" />;
             }}
           >
             Logga in
@@ -99,8 +97,10 @@ function userLogin(user) {
     })
     .then(function (response) {
       console.log(response.data);
-      sessionStorage.setItem("User", response.data)
-      window.location.reload();
+      sessionStorage.setItem("User", response.data.username);
+      if (response.data) {
+        window.location.reload();
+      }
     })
     .catch(function (error) {
       console.log(error);

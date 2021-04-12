@@ -15,3 +15,7 @@ Påbörjade implementation av startsidans wireframe, lade även till sessionstor
 ## 08/4 - 21
 
 Anslöt databas.
+
+## 09/4 - 21
+
+Det går nu att skapa konton och logga in.
