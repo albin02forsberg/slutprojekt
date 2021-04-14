@@ -35,6 +35,8 @@ function Login() {
 
     user.username = username;
     user.password = password;
+
+    console.log(user);
   }
 
   return (
@@ -76,7 +78,7 @@ function Login() {
             type="button"
             onClick={() => {
               userLogin(user);
-              <Redirect to="/" />;
+              <Redirect to exact="/" />;
             }}
           >
             Logga in

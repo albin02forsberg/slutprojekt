@@ -18,42 +18,42 @@ function IsLoggedin() {
 
   console.log(user);
 
-  let link = "/" + user;
+  let link = "/user/" + user;
 
   if (sessionStorage.getItem("User") == "null") {
     return (
-      <ul className="nav-list">
-        <li className="nav-link">
-          <Link to="/login">
-            <button>Logga in</button>
-          </Link>
+      <ul className="navbar-nav mr-auto">
+        <li className="nav-item">
+          <a className="nav-link" href="/login">
+            Logga in
+          </a>
         </li>
-        <li className="nav-link">
-          <Link to="/signup">
-            <button>Skapa konto</button>
-          </Link>
+        <li className="nav-item">
+          <a href="/signup" className="nav-link">
+            Skapa konto
+          </a>
         </li>
       </ul>
     );
   } else {
     return (
-      <ul className="nav-list">
-        <li className="nav-link">
-          <Link to={link}>
-            <button>{user}</button>
-          </Link>
+      <ul className="navbar-nav mr-auto">
+        <li className="nav-item">
+          <a href={link} className="nav-link">
+            {user}
+          </a>
         </li>
-        <li className="nav-link">
-          <Link to="/logout">
-            <button
-              onClick={() => {
-                sessionStorage.setItem("User", null);
-                window.location.reload();
-              }}
-            >
-              Logga ut
-            </button>
-          </Link>
+        <li className="nav-item">
+          <a
+            href="/"
+            className="nav-link"
+            onClick={() => {
+              sessionStorage.setItem("User", null);
+              window.location.reload();
+            }}
+          >
+            Logga ut
+          </a>
         </li>
       </ul>
     );

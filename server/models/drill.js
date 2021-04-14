@@ -1,0 +1,17 @@
+let mongoose = require("mongoose");
+let Schema = mongoose.Schema;
+
+let DrillSchema = new Schema({
+    name: String,
+    type: String,
+    level: String,
+    moment: String,
+    description: String,
+    explination: String,
+    organization: String,
+    rules: String,
+    creator: String,
+    created: { type: Date, default: Date.now() }
+});
+
+module.exports = mongoose.model("Drill", DrillSchema);

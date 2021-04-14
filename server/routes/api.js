@@ -2,6 +2,7 @@ let express = require('express');
 let router = express.Router();
 let app = require("../app");
 let user = require("../models/user");
+let drill = require("../models/drill");
 
 router.post("/createuser", function(req, res, next) {
     console.log(req.body);
@@ -53,4 +54,17 @@ router.get("/getuser", function(req, res, next) {
     });
 });
 
+router.post("/newdrill", function(req, res, next) {
+    console.log(req.body);
+
+    let newDrill = new drill(req.body[0]);
+    newDrill.save();
+});
+
+router.get("/userdrills", function(req, res, next) {
+    console.log("USERDRILLS");
+    drill.find({ creator: req.query.username }).then(doc => {
+        res.send(doc);
+    })
+});
 module.exports = router;

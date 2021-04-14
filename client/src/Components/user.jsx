@@ -1,5 +1,6 @@
 import react, { useState, useEffect } from "react";
 import axios from "axios";
+import Excersice from "./excercise";
 
 import {
   BrowserRouter as Router,
@@ -15,7 +16,22 @@ function User() {
   const { user } = useParams();
 
   const [drills, setDrill] = useState([]);
-  const [excer, setExcer] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:3001/api/userdrills", {
+        params: {
+          username: user,
+        },
+      })
+      .then((response) => {
+        console.log(response.data);
+        setDrill(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
 
   useEffect(() => {
     axios
@@ -36,16 +52,19 @@ function User() {
   }, [user]);
 
   return (
-    <div className="main">
+    <div className="container">
       <h1>{acc || "Page not found"}</h1>
-      <div className="display">
-        <div className="row">
-          <div>
-            <h2>Övningar</h2>
+      <div className="row">
+        <div className="col-md-12">
+          <h2>Övningar</h2>
+          <div className="card-columns">
+            {drills.map((element) => {
+              return <Excersice name={user} created={element.created} type={element.type} moment={element.moment} creator={element.creator}/>;
+            })}
           </div>
-          <div>
-            <h2>Träningspass</h2>
-          </div>
+        </div>
+        <div className="col-md-12">
+          <h2>Träningspass</h2>
         </div>
       </div>
     </div>

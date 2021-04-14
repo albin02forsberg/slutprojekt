@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import "./static/App2.css";
 import {
   BrowserRouter as Router,
   Switch,
@@ -16,6 +17,7 @@ import Home from "./Components/home";
 import Login from "./Components/login";
 import Header from "./Components/header";
 import User from "./Components/user";
+import DrillCreator from "./Components/drillCreator"
 
 export default function App() {
   if (sessionStorage.getItem("User") == null) {
@@ -37,7 +39,10 @@ export default function App() {
           <Route path="/signup">
             <Singup />
           </Route>
-          <Route path="/:user">
+          <Route path="/drillcreator">
+            <DrillCreator/>
+          </Route>
+          <Route path="/user/:user">
             <User />
           </Route>
           <Route path="/">

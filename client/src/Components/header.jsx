@@ -1,6 +1,6 @@
 import react, { useState, useEffect } from "react";
-import "../static/App.css";
 import IsLoggedin from "../Components/menuBtnsLogin";
+import "../static/App2.css"
 import {
   BrowserRouter as Router,
   Switch,
@@ -35,55 +35,29 @@ function Header() {
   let className = show + " header";
 
   return (
-    <div className={className}>
-      <nav className="nav">
-        <div className="banner">
-          <h1 className="bannerName">
-            <Link to="/">Titel</Link>
-          </h1>
-        </div>
-        <div className="nav-links">
-          <ul className="nav-list">
-            <li className="nav-link">
-              <Link to="/">
-                <button onClick={() => setShow("hide")}>Flöde</button>
-              </Link>
-            </li>
-            <li className="nav-link">
-              <Link to="/excercise">
-                <button onClick={() => setShow("hide")}>Övningsskaparen</button>
-              </Link>
-            </li>
-            <li className="nav-link">
-              <Link to="/trainingplanner">
-                <button onClick={() => setShow("hide")}>Träningsplanerare</button>
-              </Link>
-            </li>
-          </ul>
-        </div>
-        <h2 className="bannerName">
-          <Link>Konto</Link>
-        </h2>
-        <div className="nav-links">
-          <IsLoggedin />
-        </div>
-      </nav>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="/">Title</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
 
-      <button
-        id="btnShow"
-        onClick={() => {
-          if ( btnText  == "Show") {
-            setBtnText("Hide");
-            setShow("show")
-          } else {
-            setShow("hide")
-            setBtnText("Show");
-          }
-        }}
-      >
-        {btnText}
-      </button>
-    </div>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="/">Flöde</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/drillcreator">Övningskaparen</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/excercise">Träninsplaneraren</a>
+      </li>
+    </ul>
+    <ul class="navbar-nav my-2 my-lg-0">
+      <IsLoggedin/>
+    </ul>
+  </div>
+</nav>
   );
 }
 
