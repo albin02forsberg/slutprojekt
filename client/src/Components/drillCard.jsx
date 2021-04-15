@@ -1,7 +1,7 @@
 import react from "react";
 
 function Excercise(prop) {
-  let link = "/" + prop.name;
+  let link = "/drill/" + prop.id;
   return (
       <div class="card">
         <div class="card-body">

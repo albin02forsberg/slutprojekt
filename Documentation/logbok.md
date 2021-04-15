@@ -19,3 +19,7 @@ Anslöt databas.
 ## 09/4 - 21
 
 Det går nu att skapa konton och logga in.
+
+## 14/4 - 21
+
+Forsätter på designen och wireframes för hela hemsidan.

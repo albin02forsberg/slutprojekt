@@ -39,6 +39,9 @@ export default function App() {
           <Route path="/signup">
             <Singup />
           </Route>
+          <Route path="/drill/:id">
+            
+          </Route>
           <Route path="/drillcreator">
             <DrillCreator/>
           </Route>

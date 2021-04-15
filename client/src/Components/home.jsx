@@ -1,6 +1,6 @@
 import react, { useState, useEffect } from "react";
 import axios from "axios";
-import Excercise from "../Components/excercise";
+import Excercise from "./drillCard";
 import "../static/App2.css";
 
 function Home() {

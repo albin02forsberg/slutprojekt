@@ -1,6 +1,6 @@
 import react, { useState, useEffect } from "react";
 import axios from "axios";
-import Excersice from "./excercise";
+import DrillCard from "./drillCard";
 
 import {
   BrowserRouter as Router,
@@ -59,7 +59,8 @@ function User() {
           <h2>Övningar</h2>
           <div className="card-columns">
             {drills.map((element) => {
-              return <Excersice name={user} created={element.created} type={element.type} moment={element.moment} creator={element.creator}/>;
+              return <DrillCard name={element.name} created={element.created} type={element.type} moment={element.moment} creator={element.creator} id={element._id}/>;
+
             })}
           </div>
         </div>
