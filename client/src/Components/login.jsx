@@ -21,6 +21,10 @@ function Login() {
     password: password,
   };
 
+  if (sessionStorage.getItem("User") != "null") {
+    window.location.replace("http://localhost:3000/");
+  }
+
   function handleChange(event) {
     event.preventDefault();
     let n = event.target.name;
@@ -40,51 +44,43 @@ function Login() {
   }
 
   return (
-    <div className="main">
+    <div className="col-md-12">
       <h1>Login</h1>
-      <div className="display">
-        <form method="post" action="/">
-          <table>
-            <tr>
-              <td>
-                <label htmlFor="username">Användarnamn</label>
-              </td>
-              <td>
-                <input
-                  type="text"
-                  name="username"
-                  id="username"
-                  onChange={handleChange}
-                  value={user.username}
-                />
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <label htmlFor="password">Lösenord</label>
-              </td>
-              <td>
-                <input
-                  type="password"
-                  name="password"
-                  id="password"
-                  onChange={handleChange}
-                  value={user.password}
-                />
-              </td>
-            </tr>
-          </table>
+      <form>
+        <div className="form-group">
+          <label htmlFor="username">Användarnamn</label>
+          <input
+            type="text"
+            name="username"
+            id="username"
+            onChange={handleChange}
+            value={user.username}
+            className="form-control"
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="password">Lösenord</label>
+          <input
+            type="password"
+            name="password"
+            id="password"
+            onChange={handleChange}
+            value={user.password}
+            className="form-control"
+          />
+        </div>
+        <div className="form-group">
           <button
             type="button"
+            className="btn btn-success form-control"
             onClick={() => {
               userLogin(user);
-              <Redirect to exact="/" />;
             }}
           >
             Logga in
           </button>
-        </form>
-      </div>
+        </div>
+      </form>
     </div>
   );
 }
@@ -99,9 +95,9 @@ function userLogin(user) {
     })
     .then(function (response) {
       console.log(response.data);
-      sessionStorage.setItem("User", response.data.username);
       if (response.data) {
-        window.location.reload();
+        sessionStorage.setItem("User", response.data.username);
+        window.location.replace("http://localhost:3000/");
       }
     })
     .catch(function (error) {

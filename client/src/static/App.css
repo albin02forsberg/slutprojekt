@@ -1,17 +1,5 @@
-* {
-    margin: 0;
-    padding: 0;
-}
-
 body {
-    background-color: var(--accent-3);
-}
-
-.row div {
-    width: 50%;
-    padding: 10px;
-    height: 100%;
-    border: 1px solid var(--accent-1);
+    background-color: var(--secondary);
 }
 
 :root {
@@ -20,221 +8,34 @@ body {
     --accent-1: #fed226;
     --accent-2: #62b8e7;
     --accent-3: #00345c;
-    /* --primary: #373e49;
-    --secondary: #f9f9f9;
-    --accent-yellow: #f9f9f9;
-    --accent-light-blue: #77878b;
-    --accent-dark-blue: #00345c;
-    --accent-lightlight-blue: #b7d5d4;
-    --accent-light-green: #488286; */
+}
+
+.bg-primary {
+    background-color: var(--primary);
 }
 
 
 /* Default stuff */
 
-button {
-    height: 5vh;
-    margin: 10px;
-    background-color: var(--primary);
-    color: var(--accent-1);
-    border: 1px solid var(--accent-1);
-    border-radius: 5px;
-    font-size: 1rem;
-}
-
-button:hover {
-    background-color: var(--accent-1);
-    color: var(--accent-3);
-    border: 1px solid var(--accent-3);
-}
-
-.selected {
-    background-color: var(--accent-lightlight-blue);
-    color: black;
-}
-
-.content {
-    display: flex;
-    background-color: var(--accent-lightlight-blue);
-}
-
 
 /* Header and navigation */
 
-.header {
-    width: 20%;
-    min-height: 100vh;
-    animation: 0.2s showNav;
-    background-color: var(--accent-3);
-    position: fixed;
-    border-right: 2px solid var(--accent-1);
+.nav-link,
+.nav-item {
+    color: red;
 }
 
-.bannerName {
-    text-align: center;
-    padding: 20px;
+.navbar-accent,
+.navbar-brand {
+    color: var(--secondary);
 }
 
-.bannerName a {
-    text-decoration: none;
-    color: var(--accent-1);
-}
-
-.nav-links .nav-list .nav-link {
-    text-align: center;
-}
-
-.nav-links .nav-list .nav-link a {
-    color: black;
-    text-decoration: none;
-}
-
-a button {
-    width: 90%;
-}
-
-.hide {
-    animation: 0.2s hideNav;
-    animation-fill-mode: forwards;
-    border: 0px;
-}
-
-.hide>* {
-    display: none;
-}
-
-#btnShow {
-    position: fixed;
-    display: block !important;
-    width: 50px;
-    top: 90vh;
-    left: 20px;
-}
-
-@keyframes hideNav {
-    to {
-        width: 0%;
-    }
-}
-
-@keyframes showNav {
-    from {
-        width: 0%;
-    }
-    to {
-        width: 20%;
-    }
+.navbutton {
+    color: red;
 }
 
 
 /* Main content */
 
-.container {
-    width: 100vw;
-    margin: 10px;
-    display: block;
-    position: relative;
-}
-
-.main {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    min-height: 100vh;
-    background-color: var(--accent-3);
-    animation: 0.2s show;
-}
-
-@keyframes show {
-    from {
-        width: 0%;
-    }
-}
-
-.main h1 {
-    text-align: center;
-    padding: 10px;
-    color: var(--accent-1);
-}
-
-.main h2 {
-    color: var(--accent-1)
-}
-
-.buttons {
-    display: flex;
-}
-
-.buttons button {
-    width: 30%;
-}
-
-.display {
-    background-color: var(--primary);
-    margin: 15px;
-    border-radius: 5px;
-    height: 100%;
-    border: 2px solid var(--accent-light-green);
-    padding: 10px;
-}
-
 
 /* Excercise component */
-
-.row {
-    display: flex;
-    align-content: space-around;
-}
-
-table {
-    width: 90%;
-    border-collapse: collapse;
-}
-
-td,
-th {
-    text-align: left;
-    border-collapse: collapse;
-    padding: 5px;
-    background-color: var(--accent-2);
-}
-
-
-/* Form */
-
-form {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    margin: auto;
-}
-
-form table {
-    width: 50%;
-    margin: auto;
-}
-
-form table,
-td {
-    border-bottom: 1px solid black;
-    width: 50%;
-    padding: 20px;
-}
-
-form button {
-    width: 50%;
-    margin: 40px auto;
-}
-
-td input {
-    width: 100%;
-    padding: 5px;
-}
-
-.form-controll {
-    display: flex;
-    align-content: space-around;
-    justify-content: space-evenly;
-    text-align: left;
-    margin: 20px;
-}

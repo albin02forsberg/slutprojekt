@@ -16,8 +16,6 @@ function IsLoggedin() {
     setUser(sessionStorage.getItem("User"));
   }, [user]);
 
-  console.log(user);
-
   let link = "/user/" + user;
 
   if (sessionStorage.getItem("User") == "null") {

@@ -59,8 +59,17 @@ function User() {
           <h2>Övningar</h2>
           <div className="card-columns">
             {drills.map((element) => {
-              return <DrillCard name={element.name} created={element.created} type={element.type} moment={element.moment} creator={element.creator} id={element._id}/>;
-
+              return (
+                <DrillCard
+                  name={element.name}
+                  created={element.created}
+                  type={element.type}
+                  moment={element.moment}
+                  creator={element.creator}
+                  id={element._id}
+                  level={element.level}
+                />
+              );
             })}
           </div>
         </div>

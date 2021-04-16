@@ -1,10 +1,15 @@
 import react, { useState } from "react";
 import axios from "axios";
+
+// Components
+import Modal from "./modal";
+
 function Singup() {
   const [userName, setUsername] = useState("");
   const [name, setName] = useState("");
   const [mail, setMail] = useState("");
   const [password, setPassword] = useState("");
+  const [displayMsg, setDisplayMsg] = useState("none");
 
   let user = {
     name: name,
@@ -38,69 +43,72 @@ function Singup() {
   }
 
   return (
-    <div className="container">
+    <div className="col-md-12">
       <h1>Sign up</h1>
-      <div className="col-md-12">
-        <form>
-          <div className="form-group">
-            <label htmlFor="name">Namn</label>
-            <input
-              type="text"
-              name="name"
-              id="name"
-              onChange={handleChange}
-              value={user.name}
-              className="form-control"
-            />
-          </div>
-          <div className="form-group">
-            <label htmlFor="username">Användarnamn</label>
-            <input
-              type="text"
-              name="username"
-              id="username"
-              onChange={handleChange}
-              value={user.username}
-              className="form-control"
-            />
-          </div>
-          <div className="form-group">
-            <label htmlFor="mail">Mail</label>
-            <input
-              type="text"
-              name="mail"
-              id="mail"
-              onChange={handleChange}
-              value={user.mail}
-              className="form-control"
-            />
-          </div>
-          <div className="form-group">
-            <label htmlFor="password">Password</label>
-            <input
-              type="password"
-              name="password"
-              id="password"
-              className="form-control"
-              onChange={handleChange}
-              value={user.password}
-            />
-          </div>
-          <div className="form-group">
-            <button
-              type="button"
-              className="form-control btn btn-success"
-              onClick={() => {
-                sendUser(user);
-              }}
-            >
-              Sign up
-            </button>
-          </div>
-        </form>
 
-        <div id="information"></div>
-      </div>
+      <div
+        className="alert alert-info"
+        id="information"
+        style={{ display: displayMsg }}
+      ></div>
+      <form>
+        <div className="form-group">
+          <label htmlFor="name">Namn</label>
+          <input
+            type="text"
+            name="name"
+            id="name"
+            onChange={handleChange}
+            value={user.name}
+            className="form-control"
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="username">Användarnamn</label>
+          <input
+            type="text"
+            name="username"
+            id="username"
+            onChange={handleChange}
+            value={user.username}
+            className="form-control"
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="mail">Mail</label>
+          <input
+            type="text"
+            name="mail"
+            id="mail"
+            onChange={handleChange}
+            value={user.mail}
+            className="form-control"
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="password">Password</label>
+          <input
+            type="password"
+            name="password"
+            id="password"
+            className="form-control"
+            onChange={handleChange}
+            value={user.password}
+          />
+        </div>
+        <div className="form-group">
+          <button
+            type="button"
+            className="form-control btn btn-success"
+            onClick={() => {
+              setDisplayMsg("block");
+              sendUser(user);
+            }}
+          >
+            Sign up
+          </button>
+        </div>
+      </form>
     </div>
   );
 }
@@ -110,6 +118,7 @@ function sendUser(user) {
 
   let username = false;
   let mail = false;
+  let message = "";
 
   axios
     .get("http://localhost:3001/api/validateuser", {
@@ -146,7 +155,6 @@ function sendUser(user) {
           }
         })
         .then(() => {
-          let message = "";
           if (mail && username) {
             //   Send user to server and db
             axios.post("http://localhost:3001/api/createuser", user);
@@ -154,7 +162,6 @@ function sendUser(user) {
             document.getElementById("information").innerHTML =
               "<p>Account created</p>";
           } else {
-            message = "";
             if (!mail) {
               message += "<p>Invalid mail</p>";
             }

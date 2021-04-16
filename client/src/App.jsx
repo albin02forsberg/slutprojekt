@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./static/App2.css";
+import "./static/App.css";
+
 import {
   BrowserRouter as Router,
   Switch,
@@ -17,7 +19,8 @@ import Home from "./Components/home";
 import Login from "./Components/login";
 import Header from "./Components/header";
 import User from "./Components/user";
-import DrillCreator from "./Components/drillCreator"
+import DrillCreator from "./Components/drillCreator";
+import Drill from "./Components/drill";
 
 export default function App() {
   if (sessionStorage.getItem("User") == null) {
@@ -32,26 +35,28 @@ export default function App() {
         {/* Inserting header */}
         <Header />
         {/* Setting up routes */}
-        <Switch>
-          <Route path="/login">
-            <Login />
-          </Route>
-          <Route path="/signup">
-            <Singup />
-          </Route>
-          <Route path="/drill/:id">
-            
-          </Route>
-          <Route path="/drillcreator">
-            <DrillCreator/>
-          </Route>
-          <Route path="/user/:user">
-            <User />
-          </Route>
-          <Route path="/">
-            <Home />
-          </Route>
-        </Switch>
+        <div className="container">
+          <Switch>
+            <Route path="/login">
+              <Login />
+            </Route>
+            <Route path="/signup">
+              <Singup />
+            </Route>
+            <Route path="/drill/:id">
+              <Drill />
+            </Route>
+            <Route path="/drillcreator">
+              <DrillCreator />
+            </Route>
+            <Route path="/user/:user">
+              <User />
+            </Route>
+            <Route path="/">
+              <Home />
+            </Route>
+          </Switch>
+        </div>
       </Router>
     </div>
   );

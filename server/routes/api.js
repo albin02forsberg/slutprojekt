@@ -67,4 +67,19 @@ router.get("/userdrills", function(req, res, next) {
         res.send(doc);
     })
 });
+
+router.get("/getdrill", function(req, res, next) {
+    let id = req.query.id;
+
+    drill.findById(id).then((doc) => {
+        console.log(doc);
+        res.send(doc);
+    })
+});
+
+router.post("/deletedrill", function(req, res, next) {
+    console.log(req.body.id);
+    drill.deleteOne({ _id: req.body.id }, (err) => console.log(err));
+});
+
 module.exports = router;

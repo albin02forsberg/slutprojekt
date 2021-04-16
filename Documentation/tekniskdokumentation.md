@@ -1,4 +1,4 @@
-# Tekniks dokumentation
+# Teknisk dokumentation
 
 ## Beskrivning
 

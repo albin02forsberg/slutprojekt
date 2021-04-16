@@ -14,26 +14,9 @@ let login = false;
 
 function Header() {
   const [username, setUsername] = useState(sessionStorage.getItem("User"));
-  const [show, setShow] = useState("hide");
-  const [btnText, setBtnText] = useState("Hide");
-
-  if (username.length < 10) {
-    login = false;
-  }
-
-  useEffect(() => {
-    if (show == "show") {
-      setBtnText("Hide");
-    } else {
-      setBtnText("Show");
-    }
-    return () => {
-      console.log("Nav toggled");
-    };
-  }, [show]);
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-light">
+    <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
       <a className="navbar-brand" href="/">
         Title
       </a>
@@ -46,7 +29,9 @@ function Header() {
         aria-expanded="false"
         aria-label="Toggle navigation"
       >
-        <span className="navbar-toggler-icon"></span>
+        <span>
+          <i class="fas fa-bars"></i>
+        </span>
       </button>
 
       <div className="collapse navbar-collapse" id="navbarSupportedContent">
