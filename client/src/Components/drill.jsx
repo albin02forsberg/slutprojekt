@@ -9,6 +9,8 @@ import {
   useParams,
 } from "react-router-dom";
 
+import "../static/App.css";
+
 // Components
 import Modal from "./modal";
 
@@ -29,51 +31,89 @@ function Drill() {
       });
   }, [id]);
 
+  let link = "/user/" + drill.creator;
+
   return (
     <div className="container">
-      <div className="col-md-6">
-        <h1>{drill.name || "Ingen övning hittat"}</h1>
+      <div className="row">
+        <div className="col-md-6">
+          <h1>{drill.name || "Ingen övning hittat"}</h1>
 
-        <h2>Information</h2>
+          <p>
+            Skapad av <a href={link}>{drill.creator}.</a>
+          </p>
 
-        <table className="table table-md-responsive">
-          <thead>
-            <th>Nivå</th>
-            <th>Typ</th>
-            <th>Moment</th>
-          </thead>
-          <tbody>
-            <tr>
-              <td>{drill.level}</td>
-              <td>{drill.type}</td>
-              <td>{drill.moment}</td>
-            </tr>
-          </tbody>
-        </table>
-        <Button username={drill.creator} id={id} />
+          <h2>Information</h2>
+
+          <table className="table table-md-responsive">
+            <thead>
+              <th>Nivå</th>
+              <th>Typ</th>
+              <th>Moment</th>
+            </thead>
+            <tbody>
+              <tr>
+                <td>{drill.level}</td>
+                <td>{drill.type}</td>
+                <td>{drill.moment}</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h3>Beskrivning</h3>
+          <p>{drill.description}</p>
+          <h3>Varför?</h3>
+          <p>{drill.explenation}</p>
+
+          <h3>Förklaring</h3>
+          <p>{drill.description}</p>
+          <h3>Organisation</h3>
+          <p>{drill.organization}</p>
+        </div>
+        <div className="col-md-6">
+          <img
+            className="img-thumbnail"
+            src="http://localhost:3001/public/images/pitch.png"
+            alt=""
+          />
+        </div>
+        <div className="col-md-12">
+        </div>
+        <div className="col-md-12">
+          <Button username={drill.creator} id={id} />
+        </div>
       </div>
     </div>
   );
 }
 
-function Button(drill) {
-  if (drill.username == sessionStorage.getItem("User")) {
+function Button(props) {
+  if (props.username == sessionStorage.getItem("User")) {
     return (
       <div className="btn-group">
-        <button className="btn btn-primary">Redigera</button>
+        <button
+          className="btn btn-primary"
+          onClick={() => {
+            window.location.replace(
+              "http://localhost:3000/drillcreator/" + props.id
+            );
+          }}
+        >
+          Redigera
+        </button>
         <button
           type="button"
-          class="btn btn-danger"
+          className="btn btn-danger"
           data-toggle="modal"
           data-target="#exampleModal"
         >
-          Launch demo modal
+          radera
         </button>
         <Modal
           title="Radera"
           type="danger"
           text="Är du säker på att du vill radera denna övningen?"
-          id={drill.id}
+          id={props.id}
           db="drill"
           action="del"
         />

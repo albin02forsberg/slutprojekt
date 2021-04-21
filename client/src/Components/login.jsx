@@ -44,43 +44,45 @@ function Login() {
   }
 
   return (
-    <div className="col-md-12">
-      <h1>Login</h1>
-      <form>
-        <div className="form-group">
-          <label htmlFor="username">Användarnamn</label>
-          <input
-            type="text"
-            name="username"
-            id="username"
-            onChange={handleChange}
-            value={user.username}
-            className="form-control"
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="password">Lösenord</label>
-          <input
-            type="password"
-            name="password"
-            id="password"
-            onChange={handleChange}
-            value={user.password}
-            className="form-control"
-          />
-        </div>
-        <div className="form-group">
-          <button
-            type="button"
-            className="btn btn-success form-control"
-            onClick={() => {
-              userLogin(user);
-            }}
-          >
-            Logga in
-          </button>
-        </div>
-      </form>
+    <div className="container">
+      <div className="col-md-12">
+        <h1>Logga in</h1>
+        <form>
+          <div className="form-group">
+            <label htmlFor="username">Användarnamn</label>
+            <input
+              type="text"
+              name="username"
+              id="username"
+              onChange={handleChange}
+              value={user.username}
+              className="form-control"
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="password">Lösenord</label>
+            <input
+              type="password"
+              name="password"
+              id="password"
+              onChange={handleChange}
+              value={user.password}
+              className="form-control"
+            />
+          </div>
+          <div className="form-group">
+            <button
+              type="button"
+              className="btn btn-success form-control"
+              onClick={() => {
+                userLogin(user);
+              }}
+            >
+              Logga in
+            </button>
+          </div>
+        </form>
+      </div>
     </div>
   );
 }

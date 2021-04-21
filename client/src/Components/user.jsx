@@ -53,9 +53,9 @@ function User() {
 
   return (
     <div className="container">
-      <h1>{acc || "Page not found"}</h1>
       <div className="row">
         <div className="col-md-12">
+        <h1>{acc || "Page not found"}</h1>
           <h2>Övningar</h2>
           <div className="card-columns">
             {drills.map((element) => {

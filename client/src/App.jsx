@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import "./static/App2.css";
-import "./static/App.css";
+// import "./static/App2.css";
+// import "./static/App.css";
 
 import {
   BrowserRouter as Router,
@@ -21,6 +21,7 @@ import Header from "./Components/header";
 import User from "./Components/user";
 import DrillCreator from "./Components/drillCreator";
 import Drill from "./Components/drill";
+import Footer from "./Components/footer";
 
 export default function App() {
   if (sessionStorage.getItem("User") == null) {
@@ -35,7 +36,6 @@ export default function App() {
         {/* Inserting header */}
         <Header />
         {/* Setting up routes */}
-        <div className="container">
           <Switch>
             <Route path="/login">
               <Login />
@@ -45,6 +45,9 @@ export default function App() {
             </Route>
             <Route path="/drill/:id">
               <Drill />
+            </Route>
+            <Route path="/drillcreator/:id">
+              <DrillCreator />
             </Route>
             <Route path="/drillcreator">
               <DrillCreator />
@@ -56,7 +59,7 @@ export default function App() {
               <Home />
             </Route>
           </Switch>
-        </div>
+          {/* <Footer/> */}
       </Router>
     </div>
   );

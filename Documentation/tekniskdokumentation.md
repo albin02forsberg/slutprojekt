@@ -28,7 +28,7 @@ api.js filen ligger under `server/routes/api.js`, det är den filen som analyser
 
 #### API routes
 
-#### POST request
+##### POST request
 
 | Route          | Action                 | Query (Request) |
 | -------------- | ---------------------- | --------------- |
@@ -36,9 +36,9 @@ api.js filen ligger under `server/routes/api.js`, det är den filen som analyser
 | `/newdrill`    | Skapar en ny övning    | Drill object    |
 | `/deletedrill` | Raderar en övning      | Drill id        |
 
-#### GET request
+##### GET request
 
-| Route           | Action                            | Query (Request)                 | Response      |
+| Route           | Action                            | Query (Request)       | Response      |
 | --------------- | --------------------------------- | --------------------- | ------------- |
 | `/validateuser` | Söker efter användare i databasen | Username eller mail   | User object   |
 | `/signin`       | Söker efter användare för inlogg  | Username och password | User object   |

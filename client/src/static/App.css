@@ -1,5 +1,8 @@
-body {
-    background-color: var(--secondary);
+* {
+    padding: 0;
+    margin: 0;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
 }
 
 :root {
@@ -10,12 +13,32 @@ body {
     --accent-3: #00345c;
 }
 
-.bg-primary {
-    background-color: var(--primary);
+body {
+    background-color: var(--secondary);
 }
 
 
 /* Default stuff */
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+.card {
+    background-color: var(--accent-1);
+    border: 1px solid var(--primary);
+    color: var(--primary);
+    font-weight: 600;
+}
+
+.card-footer {
+    border-top: 1px solid var(--primary);
+}
+
+.row {
+    /* max-height: 85vh; */
+    overflow-y: scroll;
+}
 
 
 /* Header and navigation */
@@ -27,11 +50,27 @@ body {
 
 .navbar-accent,
 .navbar-brand {
-    color: var(--secondary);
+    color: var(--accent-1);
 }
 
 .navbutton {
     color: red;
+}
+
+p {
+    white-space: pre-line;
+}
+
+canvas {
+    width: 100%;
+    height: auto;
+    border: 1px soild black;
+}
+
+@media only screen and (max-width: 600px) {
+    .board {
+        display: none;
+    }
 }
 
 
@@ -39,3 +78,16 @@ body {
 
 
 /* Excercise component */
+
+th,
+td {
+    color: var(--accent-1);
+}
+
+
+/* Footer */
+
+footer {
+    max-height: 15vh;
+    background-color: red;
+}

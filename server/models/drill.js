@@ -7,7 +7,7 @@ let DrillSchema = new Schema({
     level: String,
     moment: String,
     description: String,
-    explination: String,
+    explenation: String,
     organization: String,
     rules: String,
     creator: String,

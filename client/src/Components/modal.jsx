@@ -36,7 +36,7 @@ function Modal(props) {
                 className="btn btn-secondary"
                 data-dismiss="modal"
               >
-                Close
+                Stäng
               </button>
               <button
                 type="button"

@@ -14,7 +14,7 @@ function Excercise(prop) {
             {prop.level} <br/>
           </p>
         </div>
-        <div className="card-footer">{prop.created}</div>
+        <div className="card-footer">{prop.created} </div>
       </div>
   );
 }

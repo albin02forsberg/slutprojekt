@@ -43,72 +43,74 @@ function Singup() {
   }
 
   return (
-    <div className="col-md-12">
-      <h1>Sign up</h1>
+    <div className="container">
+      <div className="col-md-12">
+        <h1>Sign up</h1>
 
-      <div
-        className="alert alert-info"
-        id="information"
-        style={{ display: displayMsg }}
-      ></div>
-      <form>
-        <div className="form-group">
-          <label htmlFor="name">Namn</label>
-          <input
-            type="text"
-            name="name"
-            id="name"
-            onChange={handleChange}
-            value={user.name}
-            className="form-control"
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="username">Användarnamn</label>
-          <input
-            type="text"
-            name="username"
-            id="username"
-            onChange={handleChange}
-            value={user.username}
-            className="form-control"
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="mail">Mail</label>
-          <input
-            type="text"
-            name="mail"
-            id="mail"
-            onChange={handleChange}
-            value={user.mail}
-            className="form-control"
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="password">Password</label>
-          <input
-            type="password"
-            name="password"
-            id="password"
-            className="form-control"
-            onChange={handleChange}
-            value={user.password}
-          />
-        </div>
-        <div className="form-group">
-          <button
-            type="button"
-            className="form-control btn btn-success"
-            onClick={() => {
-              setDisplayMsg("block");
-              sendUser(user);
-            }}
-          >
-            Sign up
-          </button>
-        </div>
-      </form>
+        <div
+          className="alert alert-info"
+          id="information"
+          style={{ display: displayMsg }}
+        ></div>
+        <form>
+          <div className="form-group">
+            <label htmlFor="name">Namn</label>
+            <input
+              type="text"
+              name="name"
+              id="name"
+              onChange={handleChange}
+              value={user.name}
+              className="form-control"
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="username">Användarnamn</label>
+            <input
+              type="text"
+              name="username"
+              id="username"
+              onChange={handleChange}
+              value={user.username}
+              className="form-control"
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="mail">Mail</label>
+            <input
+              type="text"
+              name="mail"
+              id="mail"
+              onChange={handleChange}
+              value={user.mail}
+              className="form-control"
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="password">Password</label>
+            <input
+              type="password"
+              name="password"
+              id="password"
+              className="form-control"
+              onChange={handleChange}
+              value={user.password}
+            />
+          </div>
+          <div className="form-group">
+            <button
+              type="button"
+              className="form-control btn btn-success"
+              onClick={() => {
+                setDisplayMsg("block");
+                sendUser(user);
+              }}
+            >
+              Sign up
+            </button>
+          </div>
+        </form>
+      </div>{" "}
     </div>
   );
 }

@@ -6,8 +6,6 @@ let logger = require('morgan');
 let cors = require("cors");
 let mongoose = require("mongoose");
 
-let user = require("./models/user");
-
 let indexRouter = require('./routes/index');
 let usersRouter = require('./routes/users');
 let apiRouter = require("./routes/api")
@@ -30,6 +28,7 @@ app.use(
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use("/public", express.static("public"));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);

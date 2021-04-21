@@ -70,11 +70,18 @@ router.get("/userdrills", function(req, res, next) {
 
 router.get("/getdrill", function(req, res, next) {
     let id = req.query.id;
+    console.log("Drill ID: " + id);
 
     drill.findById(id).then((doc) => {
         console.log(doc);
         res.send(doc);
-    })
+    });
+});
+
+router.get("/getdrills", function(req, res, next) {
+    drill.find().then((doc) => {
+        res.send(doc);
+    });
 });
 
 router.post("/deletedrill", function(req, res, next) {
