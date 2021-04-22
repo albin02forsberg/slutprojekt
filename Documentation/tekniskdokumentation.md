@@ -35,6 +35,7 @@ api.js filen ligger under `server/routes/api.js`, det är den filen som analyser
 | `/api/createuser`  | Skapar en ny användare | User object     |
 | `/api/newdrill`    | Skapar en ny övning    | Drill object    |
 | `/api/deletedrill` | Raderar en övning      | Drill id        |
+| `/api/updatedrill` | Uppdaterar en övning   | Drill id        |
 
 ##### GET request
 
@@ -46,8 +47,7 @@ api.js filen ligger under `server/routes/api.js`, det är den filen som analyser
 | `/api/userdrills`   | Söker efter övningar              | Username              | Drill objects |
 | `/api/getdrill`     | Söker efter en övning             | Drill id              | Drill object  |
 
-
-En get request ser ut som följande:
+En GET request kan se ut som följande:
 
 ```js
 router.get({ route }, function (res, req, next) {
@@ -60,6 +60,27 @@ router.get({ route }, function (res, req, next) {
 Där `data` är datan som skickas från frontend servern med hjälp av axios. ` {route}` syftar på urlen som frontend server skickar sin förfrågan till. Exempelvis `http://localhost:3001/api/getuser`.
 
 ## Datalagring
+
+Detta projektet använder sig av MongoDB som databas. MongoDb är en så kallad "no-sql" databas och använder sig av modeler via javascipt biblioteket `mongoose`.
+
+Databasen består av tre modeller:
+
+- User
+- Drill
+- Session
+
+User-modellen sparar information om användaren.
+
+En modell kan se ut som följnade:
+
+```js
+let SchemaName = new Schema({
+  username: String,
+  name: String,
+  array: [],
+  ...
+});
+```
 
 ## Testreslultat
 
