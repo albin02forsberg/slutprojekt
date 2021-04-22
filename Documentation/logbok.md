@@ -29,3 +29,7 @@ Forsätter på designen och wireframes för hela hemsidan.
 Började organisera förfrågningar till serven i en ny fil. Det går även nu att radera övningar. 
 
 Lade också till validation för sidan "övningsskapare".
+
+# 22/4 - 21
+
+Påbörjade träninspassidan

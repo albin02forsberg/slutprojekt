@@ -21,6 +21,7 @@ import Header from "./Components/header";
 import User from "./Components/user";
 import DrillCreator from "./Components/drillCreator";
 import Drill from "./Components/drill";
+import SessionPlanner from "./Components/sessionplanner";
 import Footer from "./Components/footer";
 
 export default function App() {
@@ -42,6 +43,9 @@ export default function App() {
             </Route>
             <Route path="/signup">
               <Singup />
+            </Route>
+            <Route path="/sessionplanner">
+              <SessionPlanner/>
             </Route>
             <Route path="/drill/:id">
               <Drill />

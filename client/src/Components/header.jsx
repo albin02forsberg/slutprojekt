@@ -48,7 +48,7 @@ function Header() {
             </a>
           </li>
           <li className="nav-item">
-            <a className="nav-link" href="/excercise">
+            <a className="nav-link" href="/sessionplanner">
               Träninsplaneraren
             </a>
           </li>

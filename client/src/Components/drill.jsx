@@ -77,8 +77,7 @@ function Drill() {
             alt=""
           />
         </div>
-        <div className="col-md-12">
-        </div>
+        <div className="col-md-12"></div>
         <div className="col-md-12">
           <Button username={drill.creator} id={id} />
         </div>
