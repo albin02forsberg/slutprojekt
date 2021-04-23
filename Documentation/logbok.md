@@ -33,3 +33,7 @@ Lade också till validation för sidan "övningsskapare".
 # 22/4 - 21
 
 Påbörjade träninspassidan
+
+# 23/4 - 21
+
+Skapade en tabell på träninspasssidan som visar alla träningar och en checkbox för att lägga till i ett träningspass.

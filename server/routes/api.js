@@ -4,6 +4,9 @@ let app = require("../app");
 let user = require("../models/user");
 let drill = require("../models/drill");
 
+
+// Create new user
+// Request must contain name, username email and password
 router.post("/createuser", function(req, res, next) {
     console.log(req.body);
     let newUser = new user({ name: req.body.name, username: req.body.username, mail: req.body.mail, password: req.body.password });
@@ -32,6 +35,8 @@ router.get("/validateuser", function(req, res, next) {
     }
 });
 
+
+// Validates and send a user object to the frontend
 router.get("/signin", function(req, res, next) {
     user.findOne({ username: req.query.username, password: req.query.password }).exec()
         .then(doc => {
@@ -44,6 +49,8 @@ router.get("/signin", function(req, res, next) {
 
 });
 
+
+// Get user object with username
 router.get("/getuser", function(req, res, next) {
     user.findOne({ username: req.query.username }).then(doc => {
         console.log(doc)
@@ -54,6 +61,8 @@ router.get("/getuser", function(req, res, next) {
     });
 });
 
+
+// Creates a new drill with drill object sent from the frontend
 router.post("/newdrill", function(req, res, next) {
     console.log(req.body);
 
@@ -61,6 +70,8 @@ router.post("/newdrill", function(req, res, next) {
     newDrill.save();
 });
 
+
+// Gets all userdrills based on username
 router.get("/userdrills", function(req, res, next) {
     console.log("USERDRILLS");
     drill.find({ creator: req.query.username }).then(doc => {
@@ -68,6 +79,8 @@ router.get("/userdrills", function(req, res, next) {
     })
 });
 
+
+// Gets drill objecs from id
 router.get("/getdrill", function(req, res, next) {
     let id = req.query.id;
     console.log("Drill ID: " + id);
@@ -78,12 +91,16 @@ router.get("/getdrill", function(req, res, next) {
     });
 });
 
+
+// Gets all drills in database
 router.get("/getdrills", function(req, res, next) {
     drill.find().then((doc) => {
         res.send(doc);
     });
 });
 
+
+// Removes drill based on id
 router.post("/deletedrill", function(req, res, next) {
     console.log(req.body.id);
     drill.deleteOne({ _id: req.body.id }, (err) => console.log(err));
