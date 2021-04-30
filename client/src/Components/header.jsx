@@ -2,14 +2,6 @@ import react, { useState, useEffect } from "react";
 import IsLoggedin from "../Components/menuBtnsLogin";
 import "../static/App2.css";
 import "../static/App.css";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link,
-  useRouteMatch,
-  useParams,
-} from "react-router-dom";
 
 let login = false;
 

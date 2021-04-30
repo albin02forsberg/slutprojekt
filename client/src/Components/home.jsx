@@ -1,10 +1,9 @@
-import react, { useState, useEffect } from "react";
-import axios from "axios";
-import Excercise from "./drillCard";
+import react, { useState } from "react";
 import "../static/App2.css";
 
 // Components
 import Drills from "./drills";
+import Sessions from "./sessions";
 
 function Home() {
   const [display, setDisplay] = useState("Övningar");
@@ -49,8 +48,9 @@ function Home() {
 function View(props) {
   if (props.name == "Övningar") {
     return <Drills />;
+  } else {
+    return <Sessions />;
   }
-  return <h2>{props.name}</h2>;
 }
 
 export default Home;

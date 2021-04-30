@@ -1,8 +1,16 @@
-let express = require('express');
-let router = express.Router();
-let app = require("../app");
+const express = require('express');
+const router = express.Router();
+const multer = require("multer");
+
 let user = require("../models/user");
 let drill = require("../models/drill");
+let session = require("../models/session");
+
+
+const storage = multer.diskStorage({
+    destination: "./public/images",
+})
+const upload = multer({ storage: storage });
 
 
 // Create new user
@@ -63,11 +71,17 @@ router.get("/getuser", function(req, res, next) {
 
 
 // Creates a new drill with drill object sent from the frontend
-router.post("/newdrill", function(req, res, next) {
-    console.log(req.body);
+router.post("/newdrill", upload.single("img"), function(req, res, next) {
 
-    let newDrill = new drill(req.body[0]);
-    newDrill.save();
+    let newDrill = new drill(req.body.drill);
+    console.log(newDrill._id);
+
+    res.send(newDrill._id);
+    //    newDrill.save().then(() => res.send(newDrill._id));
+});
+
+router.post("/postdrillimg", upload.single("img"), (req, res, next) => {
+    console.log(req.file);
 });
 
 
@@ -105,5 +119,62 @@ router.post("/deletedrill", function(req, res, next) {
     console.log(req.body.id);
     drill.deleteOne({ _id: req.body.id }, (err) => console.log(err));
 });
+
+// creates a new session and sends back url for continuation
+router.get("/newsession", function(req, res, next) {
+    console.log(req.query.session);
+
+    let newSession = new session({
+        name: "",
+        moment: "",
+        level: "",
+        drills: req.query.session
+    })
+    newSession.save().then(() => {
+        session.findOne({ drills: req.query.session }).then((doc) => {
+            res.send(doc._id);
+        });
+    });
+
+});
+
+router.get("/getsession", function(req, res, next) {
+    session.findById(req.query.id).then((doc) => {
+        let session = doc;
+        drill.find({
+            "_id": {
+                $in: doc.drills
+            }
+        }).then((doc) => {
+            console.log(doc);
+            res.send({
+                drills: doc,
+                session: session
+            });
+        })
+    })
+});
+
+router.get("/getsessions", function(req, res, next) {
+    session.find().then((doc) => {
+        res.send(doc);
+    })
+});
+
+router.get("/usersessions", function(req, res, next) {
+    session.find({ creator: req.query.username }).then((doc) => {
+        res.send(doc);
+    });
+})
+
+router.post("/updatesession", function(req, res, next) {
+    console.log(req.body);
+
+    session.findOneAndUpdate(req.body.id, req.body.session).then((doc) => {
+        console.log(doc);
+    })
+
+});
+
 
 module.exports = router;

@@ -17,6 +17,7 @@ function DrillCreator() {
   const [description, setDescription] = useState("");
   const [organization, setOrganization] = useState("");
   const [rules, setRules] = useState("");
+  const [img, setImg] = useState({});
   const [explenation, setExplenation] = useState("");
   const [displayMsg, setDisplayMsg] = useState("none");
 
@@ -29,10 +30,14 @@ function DrillCreator() {
     description: description,
     organization: organization,
     rules: rules,
+    img: img,
     creator: sessionStorage.getItem("User"),
   };
 
   useEffect(() => {
+    if (sessionStorage.getItem("User") == "null") {
+      window.location.replace("/login");
+    }
     axios
       .get("http://localhost:3001/api/getdrill", {
         params: {
@@ -86,6 +91,12 @@ function DrillCreator() {
       case "rules":
         setRules(value);
         break;
+      case "img":
+        const data = new FormData();
+        data.append("file", event.target.files[0]);
+        setImg(data);
+        console.log(img);
+        break;
       default:
         break;
     }
@@ -98,6 +109,9 @@ function DrillCreator() {
     drill.organization = organization;
     drill.rules = rules;
     drill.explenation = explenation;
+    drill.img = img;
+
+    console.log(drill);
   }
 
   return (
@@ -246,12 +260,13 @@ function DrillCreator() {
               ></textarea>
             </div>
             <div className="form-group">
-              <label htmlFor="picture">Bild</label>
+              <label htmlFor="img">Bild</label>
               <input
                 type="file"
-                name="picture"
-                id="picture"
+                name="img"
+                id="img"
                 className="form-control"
+                onChange={handleChange}
               />
             </div>
           </form>
@@ -271,7 +286,15 @@ function DrillCreator() {
               className="form-control btn-success"
               onClick={() => {
                 setDisplayMsg("block");
-                sendDrill(drill, id);
+                let information = document.getElementById("information");
+                if (id) {
+                  // sendToServer(drill, "drill", "update");
+                } else if (validation(drill) == "") {
+                  sendToServer(drill, "drill", drill.creator, "create", img);
+                  console.log(img);
+                } else {
+                  information.innerHTML = validation(drill);
+                }
               }}
             >
               Spara
@@ -283,12 +306,13 @@ function DrillCreator() {
   );
 }
 
-function sendDrill(drill, id) {
+function sendDrill(drill, img, id) {
   let information = document.getElementById("information");
   if (id) {
     // sendToServer(drill, "drill", "update");
   } else if (validation(drill) == "") {
-    sendToServer(drill, "drill", drill.creator, "create");
+    sendToServer(drill, "drill", drill.creator, "create", img);
+    console.log(img);
   } else {
     information.innerHTML = validation(drill);
   }

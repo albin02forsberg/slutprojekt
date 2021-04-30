@@ -1,20 +1,10 @@
 import axios from "axios";
 import react, { useState } from "react";
-import { Redirect } from "react-router";
-import home from "./home";
-
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link,
-  useRouteMatch,
-  useParams,
-} from "react-router-dom";
 
 function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [displayMsg, setDisplayMsg] = useState("none");
 
   let user = {
     username: username,
@@ -47,6 +37,11 @@ function Login() {
     <div className="container">
       <div className="col-md-12">
         <h1>Logga in</h1>
+        <div
+          className="alert alert-info"
+          id="information"
+          style={{ display: displayMsg }}
+        ></div>
         <form>
           <div className="form-group">
             <label htmlFor="username">Användarnamn</label>
@@ -95,16 +90,20 @@ function userLogin(user) {
         password: user.password,
       },
     })
-    .then(function (response) {
+    .then((response)=> {
       console.log(response.data);
-      if (response.data) {
+      if (response.data != null) {
         sessionStorage.setItem("User", response.data.username);
-        window.location.replace("http://localhost:3000/");
+        window.location.replace(
+          "http://localhost:3000/user/" + response.data.username
+        );
+      } else {
+        document.getElementById("information").style = "display: block";
+        document.getElementById("information").innerHTML =
+          "<p>Invalid username or password</p>";
       }
     })
-    .catch(function (error) {
-      console.log(error);
-    });
+    .then(() => {});
 }
 
 export default Login;

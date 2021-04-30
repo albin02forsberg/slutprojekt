@@ -4,7 +4,7 @@ import "../static/App.css";
 
 function Footer() {
   return (
-    <footer class="bg-light text-center text-lg-start">
+    <footer className="bg-light text-center text-lg-start">
         <h1>Footer</h1>
     </footer>
   );

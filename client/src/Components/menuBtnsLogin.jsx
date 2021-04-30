@@ -1,13 +1,4 @@
-import axios from "axios";
-import react, { Component, useState, useEffect } from "react";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link,
-  useRouteMatch,
-  useParams,
-} from "react-router-dom";
+import react, { useState, useEffect } from "react";
 
 function IsLoggedin() {
   const [user, setUser] = useState("");

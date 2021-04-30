@@ -36,4 +36,14 @@ Påbörjade träninspassidan
 
 # 23/4 - 21
 
-Skapade en tabell på träninspasssidan som visar alla träningar och en checkbox för att lägga till i ett träningspass.
+Skapade en tabell på träninspasssidan som visar alla träningar och en checkbox för att lägga till i ett träningspass. 
+
+Jobbade även med målgruppsanalysen.
+
+# 24/4 - 21
+
+Satt halva dagaen och försökte lösa bildupladdning, men utan reslutat. Skrev också vidare på både målgruppsanalys och den grafiska manualen. 
+
+# 30/4 - 21
+
+Skrev klart målgruppsanalysen och jobbade med träninspasssidorna. Det går nu att skapa träninspass med de övningar man själv har skapat. Lade även till så att man ser träningspassen i feeden och profiler. 

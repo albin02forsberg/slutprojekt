@@ -1,8 +1,9 @@
 * {
     padding: 0;
     margin: 0;
-    -ms-overflow-style: none;
-    scrollbar-width: none;
+    /* -ms-overflow-style: none;
+    scrollbar-width: none; */
+    font-family: 'Roboto', sans-serif;
 }
 
 :root {
@@ -14,7 +15,34 @@
 }
 
 body {
-    background-color: var(--secondary);
+    background-color: var(--primary);
+}
+
+h1,
+h2,
+h3,
+h4 {
+    font-family: 'Exo 2', sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+th,
+td,
+p,
+label,
+.card-footer {
+    color: var(--accent-1);
+}
+
+a {
+    color: var(--accent-2);
+}
+
+a:hover {
+    color: var(--accent-2);
 }
 
 
@@ -25,19 +53,41 @@ body {
 }
 
 .card {
-    background-color: var(--accent-1);
-    border: 1px solid var(--primary);
-    color: var(--primary);
-    font-weight: 600;
+    background-color: var(--accent-3);
+    border: 1px solid var(--accent-2);
+}
+
+.card:hover {
+    background-color: var(--primary);
+    border: 1px solid var(--accent-1);
+    font-weight: bold;
+}
+
+.card:hover .card-footer {
+    border-top: 1px solid var(--accent-1)
+}
+
+.card-title a {
+    color: var(--accent-1);
 }
 
 .card-footer {
-    border-top: 1px solid var(--primary);
+    border-top: 1px solid var(--accent-2);
 }
 
 .row {
     /* max-height: 85vh; */
     overflow-y: scroll;
+}
+
+th,
+th,
+tr {
+    background-color: var(--accent-3);
+}
+
+.alert p {
+    color: black;
 }
 
 

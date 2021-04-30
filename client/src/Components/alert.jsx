@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 
 function Alert(props) {
-
   return (
-    <div class="alert alert-primary" role="alert">
+    <div className="alert alert-primary" role="alert">
       <strong>Well done!</strong> You successfully read this important alert
       message.
     </div>

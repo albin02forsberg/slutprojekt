@@ -6,6 +6,10 @@ function SessionPlanner() {
   const [userDrills, setUserdrills] = useState([]);
 
   useEffect(() => {
+    if(sessionStorage.getItem("User") == "null"){
+      window.location.replace("/login");
+    }
+    sessionStorage.setItem("session", []);
     axios
       .get("http://localhost:3001/api/userdrills", {
         params: {
@@ -17,7 +21,7 @@ function SessionPlanner() {
 
   return (
     <div className="container">
-      <div className="col-md-12">
+      <div className="col-lg-12">
         <h1>Träningsplaneraren</h1>
 
         <h2>Mina övningar</h2>
@@ -38,7 +42,7 @@ function SessionPlanner() {
           </div>
         </form>
 
-        <table className="table">
+        <table className="table table-responsive">
           <thead>
             <th>Namn</th>
             <th>Nivå</th>
@@ -51,12 +55,6 @@ function SessionPlanner() {
               let link = "/drill/" + element._id;
               return (
                 <tr>
-                  <td>
-                    <a href={link}>{element.name}</a>
-                  </td>
-                  <td>{element.level}</td>
-                  <td>{element.type}</td>
-                  <td>{element.moment}</td>
                   <td>
                     <input
                       type="checkbox"
@@ -73,6 +71,12 @@ function SessionPlanner() {
                       }}
                     />
                   </td>
+                  <td>
+                    <a href={link}>{element.name}</a>
+                  </td>
+                  <td>{element.level}</td>
+                  <td>{element.type}</td>
+                  <td>{element.moment}</td>
                 </tr>
               );
             })}
@@ -84,9 +88,8 @@ function SessionPlanner() {
               className="btn btn-success"
               type="button"
               onClick={() => {
-                sessionStorage.setItem("session", JSON.stringify(session));
-                let i = sessionStorage.getItem("session");
-                console.log(i);
+                setSession(localStorage.getItem("session"));
+                sendSession(session);
               }}
             >
               Skapa träningspass
@@ -96,6 +99,23 @@ function SessionPlanner() {
       </div>
     </div>
   );
+}
+
+function sendSession(session) {
+  axios
+    .get("http://localhost:3001/api/newsession", {
+      params: {
+        session: session,
+      },
+    })
+    .then((response) => {
+      console.log(response);
+      let link = "createsession/" + response.data;
+      window.location.replace(link);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
 }
 
 export default SessionPlanner;

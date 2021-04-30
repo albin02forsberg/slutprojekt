@@ -1,14 +1,16 @@
-let createError = require('http-errors');
-let express = require('express');
-let path = require('path');
-let cookieParser = require('cookie-parser');
-let logger = require('morgan');
-let cors = require("cors");
-let mongoose = require("mongoose");
+const createError = require('http-errors');
+const express = require('express');
+const path = require('path');
+const cookieParser = require('cookie-parser');
+const logger = require('morgan');
+const cors = require("cors");
+const fs = require("fs");
+const mongoose = require("mongoose");
 
 let indexRouter = require('./routes/index');
 let usersRouter = require('./routes/users');
-let apiRouter = require("./routes/api")
+let apiRouter = require("./routes/api");
+const bodyParser = require('body-parser');
 
 let app = express();
 
@@ -20,13 +22,17 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(
     cors({
-        origin: 'http://localhost:3000',
+        origin: "http://localhost:3000",
         credentials: true,
     })
 );
 
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({
+    extended: false
+}))
 app.use(express.static(path.join(__dirname, 'public')));
 app.use("/public", express.static("public"));
 

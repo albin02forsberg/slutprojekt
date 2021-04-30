@@ -1,6 +1,7 @@
 import react, { useState, useEffect } from "react";
 import axios from "axios";
 import DrillCard from "./drillCard";
+import SessionCard from "./sessionCard";
 
 import {
   BrowserRouter as Router,
@@ -16,6 +17,7 @@ function User() {
   const { user } = useParams();
 
   const [drills, setDrill] = useState([]);
+  const [session, setSession] = useState([]);
 
   useEffect(() => {
     axios
@@ -31,7 +33,7 @@ function User() {
       .catch((error) => {
         console.log(error);
       });
-  }, []);
+  }, [user]);
 
   useEffect(() => {
     axios
@@ -46,16 +48,23 @@ function User() {
       .catch(() => {
         setAcc("Account not found");
       });
-    return () => {
-      console.log(user);
-    };
-  }, [user]);
+
+    axios
+      .get("http://localhost:3001/api/usersessions", {
+        params: {
+          username: user,
+        },
+      })
+      .then((result) => {
+        setSession(result.data);
+      });
+  }, []);
 
   return (
     <div className="container">
       <div className="row">
         <div className="col-md-12">
-        <h1>{acc || "Page not found"}</h1>
+          <h1>{acc || "Page not found"}</h1>
           <h2>Övningar</h2>
           <div className="card-columns">
             {drills.map((element) => {
@@ -75,6 +84,16 @@ function User() {
         </div>
         <div className="col-md-12">
           <h2>Träningspass</h2>
+          {session.map((element) => {
+            return (
+              <SessionCard
+                name={element.name}
+                moment={element.moment}
+                drills={element.drills}
+                id={element._id}
+              />
+            );
+          })}
         </div>
       </div>
     </div>

@@ -131,7 +131,7 @@ function sendUser(user) {
     })
     .then(function (response) {
       console.log(response);
-      if (response.data == "Ok!") {
+      if (response.data === "Ok!") {
         username = true;
         console.log(username);
       } else {
@@ -148,7 +148,7 @@ function sendUser(user) {
           },
         })
         .then(function (response) {
-          if (response.data == "Ok!") {
+          if (response.data === "Ok!") {
             mail = true;
             console.log(mail);
           } else {

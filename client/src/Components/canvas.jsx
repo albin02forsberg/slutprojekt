@@ -24,10 +24,10 @@ function Canvas() {
       <canvas id="board"></canvas>
       <div className="btn-group">
         <button className="btn btn-primary">
-          <i class="fas fa-times"></i>
+          <i className="fas fa-times"></i>
         </button>
         <button className="btn btn-primary">
-          <i class="far fa-circle"></i>
+          <i className="far fa-circle"></i>
         </button>
         <button className="btn btn-primary">X med boll</button>
         <button className="btn btn-primary">Mv</button>
