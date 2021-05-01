@@ -6,7 +6,7 @@ Påbörjade wireframe till startsidan. Fortsatte också med målgruppsanalysen.
 
 ## 06/4 - 21
 
-Organiserade filerna i client projektet. 
+Organiserade filerna i client projektet.
 
 ## 06/4 - 21
 
@@ -26,7 +26,7 @@ Forsätter på designen och wireframes för hela hemsidan.
 
 ## 16/4 - 21
 
-Började organisera förfrågningar till serven i en ny fil. Det går även nu att radera övningar. 
+Började organisera förfrågningar till serven i en ny fil. Det går även nu att radera övningar.
 
 Lade också till validation för sidan "övningsskapare".
 
@@ -36,14 +36,18 @@ Påbörjade träninspassidan
 
 # 23/4 - 21
 
-Skapade en tabell på träninspasssidan som visar alla träningar och en checkbox för att lägga till i ett träningspass. 
+Skapade en tabell på träninspasssidan som visar alla träningar och en checkbox för att lägga till i ett träningspass.
 
 Jobbade även med målgruppsanalysen.
 
 # 24/4 - 21
 
-Satt halva dagaen och försökte lösa bildupladdning, men utan reslutat. Skrev också vidare på både målgruppsanalys och den grafiska manualen. 
+Satt halva dagaen och försökte lösa bildupladdning, men utan reslutat. Skrev också vidare på både målgruppsanalys och den grafiska manualen.
 
 # 30/4 - 21
 
-Skrev klart målgruppsanalysen och jobbade med träninspasssidorna. Det går nu att skapa träninspass med de övningar man själv har skapat. Lade även till så att man ser träningspassen i feeden och profiler. 
+Skrev klart målgruppsanalysen och jobbade med träninspasssidorna. Det går nu att skapa träninspass med de övningar man själv har skapat. Lade även till så att man ser träningspassen i feeden och profiler.
+
+# 1/5 - 21
+
+Gjorde det möjligt att redigera både träninspass och övningar.

@@ -190,6 +190,17 @@ function DrillCreator() {
                   </option>
                 </optgroup>
                 <optgroup label="Försvarsspel">
+                  <option value="Förhindra speluppbyggnad">
+                    Förhindra speluppbyggnad
+                  </option>
+                  <option value="Återerövring av bollen">
+                    Återerövring av bollen
+                  </option>
+                  <option value="Förhinra och rädda avslut">
+                    Förhindra och rädda avslut
+                  </option>
+                </optgroup>
+                <optgroup label="Fotbollsfys">
                   <option value="Explosiv träning">Explosiv träning</option>
                   <option value="Förbättra och behålla återhämtningsförmågan mellan aktioner">
                     Förbättra och behålla återhämtningsförmågan mellan aktioner
@@ -288,7 +299,7 @@ function DrillCreator() {
                 setDisplayMsg("block");
                 let information = document.getElementById("information");
                 if (id) {
-                  // sendToServer(drill, "drill", "update");
+                  sendToServer(id, "drill", drill, "update");
                 } else if (validation(drill) == "") {
                   sendToServer(drill, "drill", drill.creator, "create", img);
                   console.log(img);
@@ -304,18 +315,6 @@ function DrillCreator() {
       </div>
     </div>
   );
-}
-
-function sendDrill(drill, img, id) {
-  let information = document.getElementById("information");
-  if (id) {
-    // sendToServer(drill, "drill", "update");
-  } else if (validation(drill) == "") {
-    sendToServer(drill, "drill", drill.creator, "create", img);
-    console.log(img);
-  } else {
-    information.innerHTML = validation(drill);
-  }
 }
 
 function validation(drill) {

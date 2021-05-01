@@ -12,8 +12,12 @@ function sendToServer(id, db, obj, action, img = null) {
         postDrill(id, obj, img);
     }
 
+    if (db == "drill" && action == "update") {
+        updateDrill(id, obj);
+    }
+
     if (db == "session" && action == "update") {
-        postSession(id, obj)
+        postSession(id, obj);
     }
 }
 
@@ -26,8 +30,17 @@ function postDrill(drill, user, img) {
     axios.post("http://localhost:3001/api/newdrill", {
         drill: drill,
     }).then((result) => {
-        axios.post("http://localhost:3001/api/postdrillimg", img);
+        window.location.replace("http://localhost:3000/drill/" + result.data);
     });
+}
+
+function updateDrill(id, obj) {
+    axios.post("http://localhost:3001/api/updatedrill", {
+        id: id,
+        drill: obj
+    }).then((result) => {
+        window.location.replace("http://localhost:3000/drill/" + result.data)
+    })
 }
 
 function postSession(id, obj) {

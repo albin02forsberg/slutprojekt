@@ -84,16 +84,18 @@ function User() {
         </div>
         <div className="col-md-12">
           <h2>Träningspass</h2>
-          {session.map((element) => {
-            return (
-              <SessionCard
-                name={element.name}
-                moment={element.moment}
-                drills={element.drills}
-                id={element._id}
-              />
-            );
-          })}
+          <div className="card-columns">
+            {session.map((element) => {
+              return (
+                <SessionCard
+                  name={element.name}
+                  moment={element.moment}
+                  drills={element.drills}
+                  id={element._id}
+                />
+              );
+            })}
+          </div>
         </div>
       </div>
     </div>

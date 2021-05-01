@@ -5,6 +5,7 @@ import sendToServer from "../static/script/sendToServer";
 
 function CreateSession() {
   const [session, setSession] = useState([]);
+  const [test, setTest] = useState({});
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [level, setLevel] = useState("11 mot 11");
@@ -17,7 +18,7 @@ function CreateSession() {
     description: description,
     level: level,
     moment: moment,
-    creator: sessionStorage.getItem("User")
+    creator: sessionStorage.getItem("User"),
   };
 
   useEffect(() => {
@@ -29,8 +30,14 @@ function CreateSession() {
       })
       .then((response) => {
         setSession(response.data.drills);
+        setTest(response.data.session);
+        setName(response.data.session.name);
+        setLevel(response.data.session.level);
+        setMoment(response.data.session.moment);
+        setDescription(response.data.session.description);
       });
   }, []);
+
 
   function handleChange(event) {
     event.preventDefault();
@@ -145,7 +152,13 @@ function CreateSession() {
             </div>
             <div className="form-group">
               <label htmlFor="level">Nivå</label>
-              <select name="level" id="level" className="form-control" onChange={handleChange} value={Session.level}>
+              <select
+                name="level"
+                id="level"
+                className="form-control"
+                onChange={handleChange}
+                value={Session.level}
+              >
                 <option value="3 mot 3">3 mot 3</option>
                 <option value="5 mot 5">5 mot 5</option>
                 <option value="7 mot 7">7 mot 7</option>

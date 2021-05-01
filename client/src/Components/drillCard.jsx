@@ -1,6 +1,6 @@
 import react from "react";
 
-function Excercise(prop) {
+function DrillCard(prop) {
   let link = "/drill/" + prop.id;
   return (
       <div className="card" onClick={()=> window.location.replace(link)}>
@@ -18,4 +18,4 @@ function Excercise(prop) {
   );
 }
 
-export default Excercise;
+export default DrillCard;

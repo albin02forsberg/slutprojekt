@@ -80,7 +80,10 @@ function Drill() {
 }
 
 function Button(props) {
-  if (props.username == sessionStorage.getItem("User")) {
+  if (
+    props.username == sessionStorage.getItem("User") ||
+    sessionStorage.getItem("User") == "admin"
+  ) {
     return (
       <div className="btn-group">
         <button

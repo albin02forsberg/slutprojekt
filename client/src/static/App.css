@@ -3,7 +3,7 @@
     margin: 0;
     /* -ms-overflow-style: none;
     scrollbar-width: none; */
-    font-family: 'Roboto', sans-serif;
+    font-family: "Roboto", sans-serif;
 }
 
 :root {
@@ -14,25 +14,31 @@
     --accent-3: #00345c;
 }
 
-body {
+
+/* body {
     background-color: var(--primary);
-}
+} */
 
 h1,
 h2,
 h3,
 h4 {
-    font-family: 'Exo 2', sans-serif;
+    text-transform: uppercase;
+    font-family: "Exo 2", sans-serif;
 }
 
 h1,
 h2,
 h3,
 h4,
+p,
+label {
+    color: var(--accent-3);
+}
+
 th,
 td,
-p,
-label,
+.card-body p,
 .card-footer {
     color: var(--accent-1);
 }
@@ -52,6 +58,11 @@ a:hover {
     display: none;
 }
 
+hr {
+    height: 10px;
+    color: var(--primary);
+}
+
 .card {
     background-color: var(--accent-3);
     border: 1px solid var(--accent-2);
@@ -64,7 +75,7 @@ a:hover {
 }
 
 .card:hover .card-footer {
-    border-top: 1px solid var(--accent-1)
+    border-top: 1px solid var(--accent-1);
 }
 
 .card-title a {

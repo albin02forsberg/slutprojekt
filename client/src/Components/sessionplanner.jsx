@@ -44,11 +44,11 @@ function SessionPlanner() {
 
         <table className="table table-responsive">
           <thead>
+            <th>Välj</th>
             <th>Namn</th>
             <th>Nivå</th>
             <th>Typ</th>
             <th>Moment</th>
-            <th>Välj</th>
           </thead>
           <tbody>
             {userDrills.map((element) => {

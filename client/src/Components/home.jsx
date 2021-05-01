@@ -11,7 +11,7 @@ function Home() {
   return (
     <div className="container">
       <div className="row">
-        <div className="col-md-6">
+        <div className="col-md-12">
           <h1>Flöde</h1>
           <div className="btn-group bnt-group-lg">
             <button
@@ -33,6 +33,19 @@ function Home() {
               Träningspass
             </button>
           </div>
+        </div>
+        <div className="col-md-6">
+          <hr />
+          <form>
+            <div className="from-group">
+              <input
+                type="text"
+                className="form-control"
+                placeholder={"Sök efter " + display.toLowerCase()}
+              />
+            </div>
+          </form>
+          <hr/>
         </div>
         <div className="col-md-12">
           <h2>{display}</h2>

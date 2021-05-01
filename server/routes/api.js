@@ -76,8 +76,13 @@ router.post("/newdrill", upload.single("img"), function(req, res, next) {
     let newDrill = new drill(req.body.drill);
     console.log(newDrill._id);
 
-    res.send(newDrill._id);
-    //    newDrill.save().then(() => res.send(newDrill._id));
+    newDrill.save().then(() => res.send(newDrill._id));
+});
+
+router.post("/updatedrill", function(req, res, next) {
+    drill.findOneAndUpdate(req.body.id, req.body.drill).then((doc) => {
+        res.send(doc._id);
+    })
 });
 
 router.post("/postdrillimg", upload.single("img"), (req, res, next) => {
@@ -172,6 +177,7 @@ router.post("/updatesession", function(req, res, next) {
 
     session.findOneAndUpdate(req.body.id, req.body.session).then((doc) => {
         console.log(doc);
+        res.send(doc._id)
     })
 
 });
