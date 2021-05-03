@@ -19,11 +19,15 @@ function sendToServer(id, db, obj, action, img = null) {
     if (db == "session" && action == "update") {
         postSession(id, obj);
     }
+
+    if (db == "session" && action == "del") {
+        deleteSession(id);
+    }
 }
 
 function delDrill(id, user) {
     axios.post("http://localhost:3001/api/deletedrill", { id: id })
-        .then(window.location.replace("http://localhost:3000/user/" + user));
+        .then(window.location.replace("http://localhost:3000/user/" + sessionStorage.getItem("User")));
 }
 
 function postDrill(drill, user, img) {
@@ -50,6 +54,12 @@ function postSession(id, obj) {
     }).then((result) => {
         window.location.replace("http://localhost:3000/session/" + result.data);
     })
+}
+
+function deleteSession(id) {
+    axios.post("http://localhost:3001/api/deletesession", {
+        id: id
+    }).then(window.location.replace("http://localhost:3000/user/" + sessionStorage.getItem("User")))
 }
 
 

@@ -50,7 +50,7 @@ function Session() {
             <b>Antal övningar i passet: </b> {drills.length}
           </p>
 
-          <Button username={session.creator} id={session._id} db="session" />
+          <Button username={session.creator} id={id} db="session" />
           <hr />
         </div>
         <div className="col-md-6"></div>
@@ -138,7 +138,7 @@ function Button(props) {
           type="danger"
           text="Är du säker på att du vill radera detta träningspasset?"
           id={props.id}
-          db="dession"
+          db="session"
           action="del"
         />
       </div>

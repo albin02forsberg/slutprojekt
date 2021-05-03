@@ -182,5 +182,9 @@ router.post("/updatesession", function(req, res, next) {
 
 });
 
+router.post("/deletesession", function(req, res, next) {
+    console.log("ID: " + req.body.id)
+    session.deleteOne({ _id: req.body.id }, (err) => console.log(err));
+})
 
 module.exports = router;

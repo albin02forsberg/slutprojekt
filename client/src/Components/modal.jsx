@@ -42,7 +42,7 @@ function Modal(props) {
                 type="button"
                 className={alertStyle}
                 onClick={() => {
-                  sendToServer(props.id, props.db, sessionStorage.getItem("User"), props.action);
+                  sendToServer(props.id, props.db, null, props.action);
                 }}
               >
                 {props.title}
