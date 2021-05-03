@@ -32,9 +32,7 @@ function Session() {
 
           <p>
             <b>Skapad av:</b>{" "}
-            <a href={"/user/" + session.creator}>
-              {session.creator}
-            </a>
+            <a href={"/user/" + session.creator}>{session.creator}</a>
           </p>
 
           <hr />
@@ -112,7 +110,10 @@ function Session() {
 }
 
 function Button(props) {
-  if (props.username == sessionStorage.getItem("User")) {
+  if (
+    props.username == sessionStorage.getItem("User") ||
+    sessionStorage.getItem("User") == "admin"
+  ) {
     return (
       <div className="btn-group">
         <button
