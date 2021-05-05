@@ -1,5 +1,5 @@
 import react, { useState } from "react";
-import "../static/App2.css";
+import "../static/App2-min.css";
 
 // Components
 import Drills from "./drills";

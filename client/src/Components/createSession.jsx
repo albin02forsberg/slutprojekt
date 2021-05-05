@@ -38,7 +38,6 @@ function CreateSession() {
       });
   }, []);
 
-
   function handleChange(event) {
     event.preventDefault();
     let n = event.target.name;
@@ -113,7 +112,7 @@ function CreateSession() {
               <select
                 name="moment"
                 id="moment"
-                className="form-control"
+                className="form-control custom-select"
                 onChange={handleChange}
                 value={Session.moment}
               >
@@ -155,15 +154,15 @@ function CreateSession() {
               <select
                 name="level"
                 id="level"
-                className="form-control"
+                className="form-control custom-select"
                 onChange={handleChange}
                 value={Session.level}
               >
-                <option value="3 mot 3">3 mot 3</option>
-                <option value="5 mot 5">5 mot 5</option>
+                <option value="3 mot 3">11 mot 11</option>
+                <option value="5 mot 5">9 mot 9</option>
                 <option value="7 mot 7">7 mot 7</option>
-                <option value="9 mot 9">9 mot 9</option>
-                <option value="11 mot 11">11 mot 11</option>
+                <option value="9 mot 9">5 mot 5</option>
+                <option value="11 mot 11">3 mot 3</option>
               </select>
             </div>
             <div className="form-group">

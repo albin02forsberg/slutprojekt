@@ -14,10 +14,9 @@
     --accent-3: #00345c;
 }
 
-
-/* body {
-    background-color: var(--primary);
-} */
+body {
+    background-color: var(--secondary);
+}
 
 h1,
 h2,
@@ -94,7 +93,7 @@ hr {
 th,
 th,
 tr {
-    background-color: var(--accent-3);
+    background-color: var(--primary);
 }
 
 .alert p {
@@ -105,27 +104,29 @@ tr {
 /* Header and navigation */
 
 .nav-link,
-.nav-item {
-    color: red;
-}
-
+.nav-item,
 .navbar-accent,
 .navbar-brand {
-    color: var(--accent-1);
+    color: var(--accent-1) !important;
+    font-family: "Roboto";
 }
 
-.navbutton {
-    color: red;
+.nav-link:hover {
+    color: var(--secondary) !important;
 }
 
-p {
-    white-space: pre-line;
+.navbar {
+    background-color: var(--primary) !important;
 }
 
 canvas {
     width: 100%;
     height: auto;
     border: 1px soild black;
+}
+
+#logo {
+    width: 60px;
 }
 
 @media only screen and (max-width: 600px) {
@@ -136,6 +137,10 @@ canvas {
 
 
 /* Main content */
+
+p {
+    white-space: pre-line;
+}
 
 
 /* Excercise component */

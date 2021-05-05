@@ -1,9 +1,5 @@
 import react, { useState, useEffect } from "react";
 import IsLoggedin from "../Components/menuBtnsLogin";
-import "../static/App2.css";
-import "../static/App.css";
-
-let login = false;
 
 function Header() {
   const [username, setUsername] = useState(sessionStorage.getItem("User"));
@@ -11,7 +7,7 @@ function Header() {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
       <a className="navbar-brand" href="/">
-        Title
+        <img id="logo" src="http://localhost:3001/public/images/icon.png" alt=""/>
       </a>
       <button
         className="navbar-toggler"

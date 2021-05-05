@@ -36,6 +36,10 @@ function Drill() {
             Skapad av <a href={link}>{drill.creator}.</a>
           </p>
 
+
+          <Button username={drill.creator} id={id} />
+
+
           <h2>Information</h2>
 
           <table className="table table-md-responsive">
@@ -72,7 +76,6 @@ function Drill() {
         </div>
         <div className="col-md-12"></div>
         <div className="col-md-12">
-          <Button username={drill.creator} id={id} />
         </div>
       </div>
     </div>

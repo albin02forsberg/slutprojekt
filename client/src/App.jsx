@@ -16,6 +16,9 @@ import Footer from "./Components/footer";
 import CreateSession from "./Components/createSession";
 import Session from "./Components/session";
 
+// Style
+
+
 export default function App() {
   if (sessionStorage.getItem("User") == null) {
     sessionStorage.setItem("User", null);

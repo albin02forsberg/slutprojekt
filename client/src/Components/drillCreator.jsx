@@ -137,7 +137,7 @@ function DrillCreator() {
               <label htmlFor="type">Typ av övning</label>
               <select
                 name="type"
-                className="form-control"
+                className="form-control custom-select"
                 id="type"
                 required
                 onChange={handleChange}
@@ -152,7 +152,7 @@ function DrillCreator() {
               <label htmlFor="level">Nivå</label>
               <select
                 name="level"
-                className="form-control"
+                className="form-control custom-select"
                 id="level"
                 required
                 onChange={handleChange}
@@ -170,7 +170,7 @@ function DrillCreator() {
               <select
                 name="moment"
                 id="moment"
-                className="form-control"
+                className="form-control custom-select"
                 required
                 onChange={handleChange}
                 value={drill.moment}
