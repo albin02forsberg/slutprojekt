@@ -51,3 +51,9 @@ Skrev klart målgruppsanalysen och jobbade med träninspasssidorna. Det går nu 
 # 1/5 - 21
 
 Gjorde det möjligt att redigera både träninspass och övningar.
+
+# 5/5 - 21
+
+Gjorde en logga till hemsidan och fortsatte skriva på den grafiska manualen. 
+
+Gjorde också lite ändringar på header så den ser lite bättre ut.

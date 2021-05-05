@@ -20,4 +20,4 @@ npm install
 npm start
 ```
 
-`npm install` måste bara användas första gången.
+`npm install` måste bara användas första gången. Dock så måste både serven och klienten köras samtidigt i två olika terminaler.
