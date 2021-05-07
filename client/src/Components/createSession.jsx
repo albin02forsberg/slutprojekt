@@ -5,7 +5,6 @@ import sendToServer from "../static/script/sendToServer";
 
 function CreateSession() {
   const [session, setSession] = useState([]);
-  const [test, setTest] = useState({});
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [level, setLevel] = useState("11 mot 11");
@@ -30,11 +29,12 @@ function CreateSession() {
       })
       .then((response) => {
         setSession(response.data.drills);
-        setTest(response.data.session);
-        setName(response.data.session.name);
-        setLevel(response.data.session.level);
-        setMoment(response.data.session.moment);
-        setDescription(response.data.session.description);
+        if (response.data.session.name != "") {
+          setName(response.data.session.name);
+          setLevel(response.data.session.level);
+          setMoment(response.data.session.moment);
+          setDescription(response.data.session.description);
+        }
       });
   }, []);
 
@@ -158,11 +158,11 @@ function CreateSession() {
                 onChange={handleChange}
                 value={Session.level}
               >
-                <option value="3 mot 3">11 mot 11</option>
-                <option value="5 mot 5">9 mot 9</option>
+                <option value="11 mot 11">11 mot 11</option>
+                <option value="9 mot 9">9 mot 9</option>
                 <option value="7 mot 7">7 mot 7</option>
-                <option value="9 mot 9">5 mot 5</option>
-                <option value="11 mot 11">3 mot 3</option>
+                <option value="5 mot 5">5 mot 5</option>
+                <option value="3 mot 3">3 mot 3</option>
               </select>
             </div>
             <div className="form-group">

@@ -11,7 +11,8 @@ function Home() {
   return (
     <div className="container">
       <div className="row">
-        <div className="col-md-12">
+        <hr/>
+        <div className="col-md-6">
           <h1>Flöde</h1>
           <div className="btn-group bnt-group-lg">
             <button

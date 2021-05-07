@@ -42,6 +42,10 @@ td,
     color: var(--accent-1);
 }
 
+.card:hover {
+    cursor: pointer;
+}
+
 a {
     color: var(--accent-2);
 }

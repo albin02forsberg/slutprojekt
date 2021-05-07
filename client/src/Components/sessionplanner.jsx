@@ -9,7 +9,6 @@ function SessionPlanner() {
     if(sessionStorage.getItem("User") == "null"){
       window.location.replace("/login");
     }
-    sessionStorage.setItem("session", []);
     axios
       .get("http://localhost:3001/api/userdrills", {
         params: {
