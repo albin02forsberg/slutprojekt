@@ -89,6 +89,10 @@ hr {
     border-top: 1px solid var(--accent-2);
 }
 
+.card-footer a {
+    color: var(--accent-1);
+}
+
 .row {
     /* max-height: 85vh; */
     overflow-y: scroll;
