@@ -16,14 +16,16 @@ function Sessions() {
   return (
     <div>
       {sessions.map((element) => {
-        return (
-          <SessionCard
-            name={element.name}
-            moment={element.moment}
-            drills={element.drills}
-            id={element._id}
-          />
-        );
+        if (element.name != "") {
+          return (
+            <SessionCard
+              name={element.name}
+              moment={element.moment}
+              drills={element.drills}
+              id={element._id}
+            />
+          );
+        }
       })}
     </div>
   );

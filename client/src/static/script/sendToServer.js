@@ -2,7 +2,7 @@ import axios from "axios";
 
 // This file sends request to server to delete drills and training sessions
 
-function sendToServer(id, db, obj, action, img = null) {
+function sendToServer(id, db, obj, action, img) {
     console.log(id);
 
     if (db == "drill" && action == "del") {
@@ -31,11 +31,12 @@ function delDrill(id, user) {
 }
 
 function postDrill(drill, user, img) {
-    axios.post("http://localhost:3001/api/newdrill", {
-        drill: drill,
-    }).then((result) => {
-        window.location.replace("http://localhost:3000/drill/" + result.data);
+    axios.post("http://localhost:3001/api/newdrill", { drill: drill }).then((result) => {
+        // window.location.replace("http://localhost:3000/drill/" + result.data);
+    }).then(() => {
+        axios.post("http://localhost:3001/api/uploadimg", img)
     });
+
 }
 
 function updateDrill(id, obj) {

@@ -1,9 +1,11 @@
 import react, { useState } from "react";
-import "../static/App2-min.css";
 
 // Components
 import Drills from "./drills";
 import Sessions from "./sessions";
+
+import "../static/App2-min.css";
+import "../static/App.css";
 
 function Home() {
   const [display, setDisplay] = useState("Övningar");

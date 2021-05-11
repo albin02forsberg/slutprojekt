@@ -10,14 +10,14 @@ const mongoose = require("mongoose");
 let indexRouter = require('./routes/index');
 let usersRouter = require('./routes/users');
 let apiRouter = require("./routes/api");
-const bodyParser = require('body-parser');
+// const bodyParser = require('body-parser');
+const multer = require("multer");
 
 let app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
-
 app.use(logger('dev'));
 app.use(express.json());
 app.use(
@@ -29,10 +29,10 @@ app.use(
 
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({
-    extended: false
-}))
+// app.use(bodyParser.json());
+// app.use(bodyParser.urlencoded({
+//     extended: false
+// }))
 app.use(express.static(path.join(__dirname, 'public')));
 app.use("/public", express.static("public"));
 

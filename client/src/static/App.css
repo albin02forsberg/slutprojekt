@@ -67,14 +67,14 @@ hr {
 }
 
 .card {
-    background-color: var(--accent-3);
+    background-color: var(--primary);
     border: 1px solid var(--accent-2);
+    border-radius: 10px;
 }
 
 .card:hover {
-    background-color: var(--primary);
+    background-color: var(--accent-3);
     border: 1px solid var(--accent-1);
-    font-weight: bold;
 }
 
 .card:hover .card-footer {

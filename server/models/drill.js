@@ -11,6 +11,7 @@ let DrillSchema = new Schema({
     organization: String,
     rules: String,
     creator: String,
+    img: String,
     created: { type: Date, default: Date.now() }
 });
 

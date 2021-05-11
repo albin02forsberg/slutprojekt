@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 
-import "../static/App.css";
 
 // Components
 import Modal from "./modal";
@@ -70,7 +69,7 @@ function Drill() {
         <div className="col-md-6">
           <img
             className="img-thumbnail"
-            src="http://localhost:3001/public/images/pitch.png"
+            src={"http://localhost:3001/public/images/drills/" + drill.img}
             alt=""
           />
         </div>
@@ -93,7 +92,7 @@ function Button(props) {
           className="btn btn-primary"
           onClick={() => {
             window.location.replace(
-              "http://localhost:3000/drillcreator/" + props.id
+              "http://localhost:3000/editdrill/" + props.id
             );
           }}
         >

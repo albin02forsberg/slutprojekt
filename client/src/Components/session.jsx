@@ -77,7 +77,7 @@ function Session() {
         </div>
       </div>
       {drills.map((element) => {
-        let img = "http://localhost:3001/public/images/" + element._id + ".png";
+        let img = "http://localhost:3001/public/images/drills/" + element.img;
         return (
           <div className="row">
             <div className="col-md-6">
@@ -98,7 +98,7 @@ function Session() {
             <div className="col-md-6">
               <img
                 className="img-thumbnail"
-                src="http://localhost:3001/public/images/pitch.png"
+                src={"http://localhost:3001/public/images/drills/" + element.img }
                 alt={img}
               />
             </div>

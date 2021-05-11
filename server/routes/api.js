@@ -1,16 +1,22 @@
 const express = require('express');
 const router = express.Router();
-const multer = require("multer");
 
 let user = require("../models/user");
 let drill = require("../models/drill");
 let session = require("../models/session");
 
+const multer = require("multer");
 
-const storage = multer.diskStorage({
-    destination: "./public/images",
-})
-const upload = multer({ storage: storage });
+const MulterStorage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, "./public/images/drills")
+    },
+    filename: (req, file, cb) => {
+        cb(null, req.body.name + file.originalname);
+    }
+});
+
+const upload = multer({ storage: MulterStorage });
 
 
 // Create new user
@@ -71,16 +77,36 @@ router.get("/getuser", function(req, res, next) {
 
 
 // Creates a new drill with drill object sent from the frontend
-router.post("/newdrill", upload.single("img"), function(req, res, next) {
+router.post("/newdrill", upload.single("img"), (req, res) => {
 
-    let newDrill = new drill(req.body.drill);
-    console.log(newDrill._id);
+    const request = req.body;
 
-    newDrill.save().then(() => res.send(newDrill._id));
+    const data = {
+        name: request.name,
+        type: request.type,
+        level: request.level,
+        moment: request.moment,
+        description: request.description,
+        explenation: request.explenation,
+        organization: request.organization,
+        rules: request.organization,
+        creator: request.creator,
+        img: req.file.filename
+    }
+
+    let newDrill = new drill(data);
+    console.log(req.body);
+    console.log(req.file);
+
+
+    newDrill.save().then(() => res.redirect("http://localhost:3000/drill/" + newDrill._id));
 });
 
 router.post("/updatedrill", function(req, res, next) {
-    drill.findOneAndUpdate(req.body.id, req.body.drill).then((doc) => {
+    console.log("UPDATE DRILL");
+    console.log(req.body);
+
+    drill.findByIdAndUpdate(req.body.id, req.body.drill).then((doc) => {
         res.send(doc._id);
     })
 });
@@ -175,7 +201,7 @@ router.get("/usersessions", function(req, res, next) {
 router.post("/updatesession", function(req, res, next) {
     console.log(req.body);
 
-    session.findOneAndUpdate(req.body.id, req.body.session).then((doc) => {
+    session.findByIdAndUpdate(req.body.id, req.body.session).then((doc) => {
         console.log(doc);
         res.send(doc._id)
     })

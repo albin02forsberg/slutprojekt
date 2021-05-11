@@ -57,3 +57,7 @@ Gjorde det möjligt att redigera både träninspass och övningar.
 Gjorde en logga till hemsidan och fortsatte skriva på den grafiska manualen. 
 
 Gjorde också lite ändringar på header så den ser lite bättre ut.
+
+# 11/5 - 21
+
+Gjorde det möjligt att ladda upp bilder, dock så behövedes "skapa övnings" formuläret skrivas om från grunden. Jobbade också lite med att få sidan att se lite snyggare ut.

@@ -16,18 +16,20 @@ function Drills() {
   return (
     <div>
       {drills.map((element) => {
-        return (
-          <DrillCard
-            name={element.name}
-            created={element.created}
-            type={element.type}
-            moment={element.moment}
-            creator={element.creator}
-            id={element._id}
-            level={element.level}
-            creator={element.creator}
-          />
-        );
+        if ((element.name != "")) {
+          return (
+            <DrillCard
+              name={element.name}
+              created={element.created}
+              type={element.type}
+              moment={element.moment}
+              creator={element.creator}
+              id={element._id}
+              level={element.level}
+              creator={element.creator}
+            />
+          );
+        }
       })}
     </div>
   );

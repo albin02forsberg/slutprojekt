@@ -15,9 +15,7 @@ import SessionPlanner from "./Components/sessionplanner";
 import Footer from "./Components/footer";
 import CreateSession from "./Components/createSession";
 import Session from "./Components/session";
-
-// Style
-
+import EditDrill from "./Components/editdrill";
 
 export default function App() {
   if (sessionStorage.getItem("User") == null) {
@@ -42,6 +40,9 @@ export default function App() {
           <Route path="/sessionplanner">
             <SessionPlanner />
           </Route>
+          <Route path="/drillcreator">
+            <DrillCreator />
+          </Route>
           <Route path="/createsession/:id">
             <CreateSession />
           </Route>
@@ -51,11 +52,8 @@ export default function App() {
           <Route path="/drill/:id">
             <Drill />
           </Route>
-          <Route path="/drillcreator/:id">
-            <DrillCreator />
-          </Route>
-          <Route path="/drillcreator">
-            <DrillCreator />
+          <Route path="/editdrill/:id">
+            <EditDrill />
           </Route>
           <Route path="/user/:user">
             <User />

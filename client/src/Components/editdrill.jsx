@@ -1,14 +1,8 @@
-import React, { useEffect, useState } from "react";
 import axios from "axios";
-
-// Components
-import Canvas from "./canvas";
-import ImageUploader from "react-images-upload";
-
-import sendToServer from "../static/script/sendToServer";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
 
-function DrillCreator() {
+function EditDrill() {
   const { id } = useParams();
 
   const [name, setName] = useState("");
@@ -18,10 +12,9 @@ function DrillCreator() {
   const [description, setDescription] = useState("");
   const [organization, setOrganization] = useState("");
   const [rules, setRules] = useState("");
-  const [img, setImg] = useState(null);
+  const [img, setImg] = useState("");
   const [explenation, setExplenation] = useState("");
   const [displayMsg, setDisplayMsg] = useState("none");
-  const [action, setAction] = useState("newdrill");
 
   let drill = {
     name: name,
@@ -47,26 +40,20 @@ function DrillCreator() {
         },
       })
       .then((response) => {
-        if (id) {
-          console.log(response.data);
-          setName(response.data.name);
-          setType(response.data.type);
-          setLevel(response.data.level);
-          setMoment(response.data.moment);
-          setDescription(response.data.description);
-          setOrganization(response.data.organization);
-          setRules(response.data.rules);
-          setExplenation(response.data.explenation);
-          setAction("updatedrill");
-        }
+        console.log(response.data);
+        setName(response.data.name);
+        setType(response.data.type);
+        setLevel(response.data.level);
+        setMoment(response.data.moment);
+        setDescription(response.data.description);
+        setOrganization(response.data.organization);
+        setRules(response.data.rules);
+        setExplenation(response.data.explenation);
+        setImg(response.data.img);
       });
   }, [id]);
 
   console.log("Drillid: " + id);
-
-  function picture(picture) {
-    setImg(picture);
-  }
 
   function handleChange(event) {
     event.preventDefault();
@@ -98,11 +85,6 @@ function DrillCreator() {
       case "rules":
         setRules(value);
         break;
-      case "img":
-        // const data = URL.createObjectURL(event.target.files[0])
-        setImg(event.target.files[0]);
-        console.log(img);
-        break;
       default:
         break;
     }
@@ -123,13 +105,9 @@ function DrillCreator() {
   return (
     <div className="container">
       <div className="row">
-        <div className="col-lg-12">
-          <h1>Skapa ny övning</h1>
-          <form
-            enctype="multipart/form-data"
-            action={"http://localhost:3001/api/" + action}
-            method="post"
-          >
+        <div className="col-lg-6">
+          <h1>Uppdatera övning</h1>
+          <form>
             <div className="form-group">
               <label htmlFor="name">Namn</label>
               <input
@@ -286,77 +264,36 @@ function DrillCreator() {
                 value={drill.rules}
               ></textarea>
             </div>
-            {id == null &&
-            
-            <div className="form-group">
-              <h3>
-                <label htmlFor="img">Bild</label>
-              </h3>
-              <input
-                type="file"
-                name="img"
-                id="img"
-                className="form-control"
-                onChange={handleChange}
-              />
-            </div>
-            }
-            {id != null &&
-           <input name="id" id="id" value={id} style={{display: "block"}}/>
-            }
-            <input
-              type="text"
-              name="creator"
-              id="creator"
-              value={sessionStorage.getItem("User")}
-              style={{ display: "none" }}
-            />
-            <button type="submit" className="btn btn-success form-control"
-
+            <button
+              type="button"
+              className="btn btn-success form-control"
+              onClick={() => {
+                axios
+                  .post("http://localhost:3001/api/updatedrill", {
+                    drill: drill,
+                    id: id,
+                  })
+                  .then((response) => {
+                    window.location.replace(
+                      "http://localhost:3000/drill/" + id
+                    );
+                  });
+              }}
             >
               Spara
             </button>
           </form>
         </div>
         <div className="col-lg-6">
-          <img src={img} alt="" />
-        </div>
-        <div className="col-md-12">
-          <div
-            className="alert alert-info"
-            id="information"
-            style={{ display: displayMsg }}
-          ></div>
+          <img
+            src={"http://localhost:3001/public/images/drills/" + drill.img}
+            alt=""
+            className="img-thumbnail"
+          />
         </div>
       </div>
     </div>
   );
 }
 
-function validation(drill) {
-  let message = "";
-  console.log(drill);
-
-  if (sessionStorage.getItem("User") == "null") {
-    return "<p>Du måste ha ett konto för att ladda upp övningar</p>";
-  }
-
-  if (drill.name == "") {
-    message += "<p>Du måste ge övningen ett namn</p>";
-  }
-  if (drill.description == "") {
-    message += "<p>Du måste ange en beskrivning</p>";
-  }
-  if (drill.organization == "") {
-    message += "<p>Du måste ange organisation</p>";
-  }
-  if (drill.rules == "") {
-    message += "<p>Du måste ange anvisningar</p>";
-  }
-  if (drill.explenation == "") {
-    message += "<p>Du måste ange ett varför</p>";
-  }
-  return message;
-}
-
-export default DrillCreator;
+export default EditDrill;
