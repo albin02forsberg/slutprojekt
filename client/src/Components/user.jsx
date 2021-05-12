@@ -77,6 +77,7 @@ function User() {
                   creator={element.creator}
                   id={element._id}
                   level={element.level}
+                  img={element.img}
                 />
               );
             })}

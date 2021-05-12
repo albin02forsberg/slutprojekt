@@ -22,7 +22,7 @@
 
 ### Server
 
-### API
+#### API
 
 api.js filen ligger under `server/routes/api.js`, det är den filen som analyserar och hanterar datan som skickas från react.
 
@@ -33,7 +33,7 @@ api.js filen ligger under `server/routes/api.js`, det är den filen som analyser
 | Route               | Action                     | Query (Request)               |
 | ------------------- | -------------------------- | ----------------------------- |
 | `/api/createuser`   | Skapar en ny användare     | User object                   |
-| `/api/newdrill`     | Skapar en ny övning        | Drill object                  |
+| `/api/newdrill`     | Skapar en ny övning        | Drill object och bild         |
 | `/api/deletedrill`  | Raderar en övning          | Drill id                      |
 | `/api/updatedrill`  | Uppdaterar en övning       | Drill id                      |
 | `/api/updatesesson` | Uppdaterar ett träninspass | Session id och Session object |
@@ -46,6 +46,17 @@ router.get("/route", function (req, res, next) {
   // Dataprossessing
 });
 ```
+
+Ifall post requesten skulle behöva en bild ser den ut som följande:
+
+```js
+router.get("/route", upload("img"), function (req, res, next) {
+  let data = req.body;
+  // Data processing
+});
+```
+
+Bilden kommer automatiskt att hanteras med hjälp av biblioteket `multer`.
 
 ##### GET request
 
@@ -95,6 +106,10 @@ let SchemaName = new Schema({
   ...
 });
 ```
+
+### Bilder
+
+Bilder lagras på servern i mappen `public/images/drills`.
 
 ## Testreslultat
 

@@ -55,11 +55,11 @@ function Drill() {
               </tr>
             </tbody>
           </table>
+          <h3>Varför?</h3>
+          <p>{drill.explenation}</p>
 
           <h3>Beskrivning</h3>
           <p>{drill.description}</p>
-          <h3>Varför?</h3>
-          <p>{drill.explenation}</p>
 
           <h3>Förklaring</h3>
           <p>{drill.description}</p>

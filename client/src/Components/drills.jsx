@@ -27,6 +27,7 @@ function Drills() {
               id={element._id}
               level={element.level}
               creator={element.creator}
+              img={element.img}
             />
           );
         }

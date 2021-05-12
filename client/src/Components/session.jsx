@@ -53,7 +53,7 @@ function Session() {
         </div>
         <div className="col-md-6"></div>
         <div className="col-md-12">
-          <h3>Övningar i träninspasset</h3>
+          <h3>Övningar i passet</h3>
           <table className="table">
             <thead>
               <th>Namn</th>
@@ -82,12 +82,12 @@ function Session() {
           <div className="row">
             <div className="col-md-6">
               <h3 id={element.name}>{element.name}</h3>
+              <h4>Moment</h4>
+
+              <p>{element.moment}</p>
 
               <h4>Beskrivning</h4>
               <p>{element.description}</p>
-
-              <h4>Syfte</h4>
-              <p>{element.explenation}</p>
 
               <h4>Förklaring</h4>
               <p>{element.description}</p>
