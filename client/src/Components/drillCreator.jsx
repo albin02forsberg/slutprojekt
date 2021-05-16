@@ -301,6 +301,8 @@ function DrillCreator() {
               />
             </div>
             }
+            <br/>
+            <br/>
             {id != null &&
            <input name="id" id="id" value={id} style={{display: "block"}}/>
             }

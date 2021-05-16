@@ -70,6 +70,7 @@ hr {
     background-color: var(--primary);
     border: 1px solid var(--accent-2);
     border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.1) 5px 5px;
 }
 
 .card:hover {
@@ -93,6 +94,23 @@ hr {
     color: var(--accent-1);
 }
 
+.card-img-top {
+    border-radius: 10px;
+}
+
+.card-img-top {
+    animation: imgAnimation 1s ease-in-out;
+}
+
+@keyframes imgAnimation {
+    from {
+        height: 10px;
+    }
+    to {
+        height: 100%;
+    }
+}
+
 .row {
     /* max-height: 85vh; */
     overflow-y: scroll;
@@ -102,6 +120,14 @@ th,
 th,
 tr {
     background-color: var(--primary);
+}
+
+table {
+    border-radius: 10px;
+}
+
+td a {
+    color: var(--accent-1);
 }
 
 .alert p {

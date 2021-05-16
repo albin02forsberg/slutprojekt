@@ -8,8 +8,8 @@ function DrillCard(prop) {
   const [showImg, setShowImg] = useState(false);
 
   return (
-    <div className="card">
-      {showImg && (
+    <div className="card" >
+      {prop.preview && (
         <img
           src={"http://localhost:3001/public/images/drills/" + prop.img}
           alt="img"

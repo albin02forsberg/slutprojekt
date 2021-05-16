@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 // Components
 import DrillCard from "./drillCard";
 
-function Drills() {
+function Drills(prop) {
   const [drills, setDrills] = useState([]);
 
   useEffect(() => {
@@ -28,6 +28,7 @@ function Drills() {
               level={element.level}
               creator={element.creator}
               img={element.img}
+              preview={prop.preview}
             />
           );
         }
