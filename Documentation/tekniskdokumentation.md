@@ -20,13 +20,32 @@ Projektet är uppdelat i två olika mappar, den första är `server`, som inneh�
 
 I `server` mappen är det två mappar och en fil som är viktiga:
 
-| `/routes`                                                                                                            | `/public`                                                                                                                                                                  | `app.js` |
-| -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
-| Innehåller `api.js`, vilket är apin som komminucerar med databasen och tar emot GET och Post request från fronendend | Innehåller publika bilder som används på sidan. `/public/images` innehåller tillexempel loggan och i undermappen `/drills` sparas bilderna som laddas upp från frontenden. | `app.js` innehåller express-servern. Det är också där `node.js` moduler laddas in som används på hela severn.     | 
+| `/routes`                                                                                                            | `/public`                                                                                                                                                                  | `app.js`                                                                                                      |
+| -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- |
+| Innehåller `api.js`, vilket är apin som komminucerar med databasen och tar emot GET och Post request från fronendend | Innehåller publika bilder som används på sidan. `/public/images` innehåller tillexempel loggan och i undermappen `/drills` sparas bilderna som laddas upp från frontenden. | `app.js` innehåller express-servern. Det är också där `node.js` moduler laddas in som används på hela severn. |
 
 Den andra mappen som finns heter `cilent`, som innehåller ett `react.js` project skapat med `npx create-react-app` vilket skapar en boilerplate för react. Det är ändast den väsentliga koden för att skapa en react server som är kvar, och resten har bytts ut mot egen kod.
 
+| `/public`                                                                                           | `/src`                                                                                                                                                                                                                                    |
+| --------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `/public` innehåller `index.html` filen. Det är i den som react renderar innehållet från `App.jsx`. | Innehåller `App.jsx`, vilket är filen som bestämer vad som ska renderas i `index.html`. `/Components` innehåller alla komponenter som finns med på sidan och `/public` innehåller alla css och javascriptfiler som sidan använder sig av. |
+
 ## Frontend
+
+Frontenden är uppbyggd med ett javascript-bibliotek som heter `React.js`.
+
+`React` är egentligen till för att skapa så kallade "single-page" appar. Därför har jag använt mig av en extention till react som heter `react-router`, detta gör att man lätt kan skapa en layout, där enbart de komponenter som måste uppdateras gör det. Så tillexempel headern renderas bara om ifall någon element i den uppdateras. Detta Gör att dessa komponeneter inte laddar om även om man går till en annan sida. Vilken spara på laddningstid.
+
+Förutom `react-router` har även följande react exstentions används:
+
+- `useEffect`
+  - För att uppdatera element när något uppdateras
+- `useState`
+  - För att spara information som ska skrivas ut på sidan, använder sig av `useEffect` för att uppdatera ändast när `useState` ändras.
+- `useParams`
+  - För att få tag i information från urlen, så som `/drill/id` så får man värdet på `id`
+
+Sidan ska så lång det går använda sig av react-componenens när det kommer till element på sidan. Detta för att det då blir lättare att underhålla sidan med mindre kodändringar.
 
 ## Backend
 
