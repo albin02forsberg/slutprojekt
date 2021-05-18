@@ -16,6 +16,16 @@
 
 ## Fil och mappstruktur
 
+Projektet är uppdelat i två olika mappar, den första är `server`, som innehåller en `express.js` server. Den Största anledningen till att jag har en server är för att hantera queries till och från databasen. Det skulle gått att göra det direkt på frontenden. Men det blir mer organiserat på detta sättet.
+
+I `server` mappen är det två mappar och en fil som är viktiga:
+
+| `/routes`                                                                                                            | `/public`                                                                                                                                                                  | `app.js` |
+| -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
+| Innehåller `api.js`, vilket är apin som komminucerar med databasen och tar emot GET och Post request från fronendend | Innehåller publika bilder som används på sidan. `/public/images` innehåller tillexempel loggan och i undermappen `/drills` sparas bilderna som laddas upp från frontenden. | `app.js` innehåller express-servern. Det är också där `node.js` moduler laddas in som används på hela severn.     | 
+
+Den andra mappen som finns heter `cilent`, som innehåller ett `react.js` project skapat med `npx create-react-app` vilket skapar en boilerplate för react. Det är ändast den väsentliga koden för att skapa en react server som är kvar, och resten har bytts ut mot egen kod.
+
 ## Frontend
 
 ## Backend
