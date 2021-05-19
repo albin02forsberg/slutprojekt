@@ -20,15 +20,18 @@ Projektet är uppdelat i två olika mappar, den första är `server`, som inneh�
 
 I `server` mappen är det två mappar och en fil som är viktiga:
 
-| `/routes`                                                                                                            | `/public`                                                                                                                                                                  | `app.js`                                                                                                      |
-| -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- |
-| Innehåller `api.js`, vilket är apin som komminucerar med databasen och tar emot GET och Post request från fronendend | Innehåller publika bilder som används på sidan. `/public/images` innehåller tillexempel loggan och i undermappen `/drills` sparas bilderna som laddas upp från frontenden. | `app.js` innehåller express-servern. Det är också där `node.js` moduler laddas in som används på hela severn. |
+| Fil/mapp  | Beskrivning                                                                                                                                                                |
+| --------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `/public` | Innehåller publika bilder som används på sidan. `/public/images` innehåller tillexempel loggan och i undermappen `/drills` sparas bilderna som laddas upp från frontenden. |
+| `/routes` | Innehåller `api.js`, vilket är apin som komminucerar med databasen och tar emot GET och POST request från fronendend                                                       |
+| `app.js`  | `app.js` innehåller express-servern. Det är också där `node.js` moduler laddas in som används på hela severn.                                                              |
 
-Den andra mappen som finns heter `cilent`, som innehåller ett `react.js` project skapat med `npx create-react-app` vilket skapar en boilerplate för react. Det är ändast den väsentliga koden för att skapa en react server som är kvar, och resten har bytts ut mot egen kod.
+Den andra mappen som heter `client` innehåller ett `React.js` projekt. Som har skapats med `create-react-app` som är en del av `node.js`, det skapar en del boilerplate kod som är till för att skapa react-servern.
 
-| `/public`                                                                                           | `/src`                                                                                                                                                                                                                                    |
-| --------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `/public` innehåller `index.html` filen. Det är i den som react renderar innehållet från `App.jsx`. | Innehåller `App.jsx`, vilket är filen som bestämer vad som ska renderas i `index.html`. `/Components` innehåller alla komponenter som finns med på sidan och `/public` innehåller alla css och javascriptfiler som sidan använder sig av. |
+| Fil/mapp  | Beskrivning                                                                                                                                                                                                                               |
+| --------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `/public` | innehåller `index.html` vilket är filen som react renderar sina komponenter i.                                                                                                                                                            |
+| `/src`    | Innehåller `App.jsx`, vilket är filen som kopplar ihop sidorna och komponenterna. Undermappen `/Components` innehåller alla komponenter som hemsidan använder sig av. `/static` innehåller css och javascriptfiler som hemsidan använder. |
 
 ## Frontend
 
@@ -48,6 +51,8 @@ Förutom `react-router` har även följande react exstentions används:
 Sidan ska så lång det går använda sig av react-componenens när det kommer till element på sidan. Detta för att det då blir lättare att underhålla sidan med mindre kodändringar.
 
 ## Backend
+
+Backend delen av projektet består av en `express.js` server. Den primära anledningen till att den finns till är för att hantera `MongoDB` databasen som projektet använder sig av. Den sekundära delen är för att hantera bilduppladdningar till servern, och sedan serva frontend delen med bilder. 
 
 ### Server
 
@@ -70,7 +75,7 @@ api.js filen ligger under `server/routes/api.js`, det är den filen som analyser
 En post request kan se ut som följande:
 
 ```js
-router.get("/route", function (req, res, next) {
+router.post("/route", function (req, res, next) {
   let data = req.body;
   // Dataprossessing
 });
@@ -79,7 +84,7 @@ router.get("/route", function (req, res, next) {
 Ifall post requesten skulle behöva en bild ser den ut som följande:
 
 ```js
-router.get("/route", upload("img"), function (req, res, next) {
+router.post("/route", upload("img"), function (req, res, next) {
   let data = req.body;
   // Data processing
 });
@@ -111,7 +116,7 @@ router.get("/route", function (res, req, next) {
 });
 ```
 
-Där `data` är datan som skickas från frontend servern med hjälp av axios. ` /route` syftar på urlen som frontend server skickar sin förfrågan till. Exempelvis `http://localhost:3001/api/getuser`.
+Där `req.query` är datan som skickas från frontend servern med hjälp av axios. ` /route` syftar på urlen som frontend server skickar sin förfrågan till. Exempelvis `http://localhost:3001/api/getuser`.
 
 ## Datalagring
 
