@@ -159,7 +159,7 @@ Bilder lagras på servern i mappen `public/images/drills`.
 
 ## Testreslultat
 
-![benchmark](benchmark.png)
+![benchmark](benchmark.PNG)
 
 Det låga "performance" beror först och främst på datorn, och för att projektet körs i "dev-mode"
 
