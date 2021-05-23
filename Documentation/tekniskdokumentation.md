@@ -12,7 +12,7 @@ Syftet med detta projektet är att göra det lätt och smidigt och fotbollsträn
 
 ### Färgschema
 
-![färgschema](colour.png)
+![färgschema.png](colour.png)
 
 Projektet har försökt att hålla sig till SvFF blåa och gula färger, detta för att sidan ska kännas genuin eftersom att man oftast tänker sig de blågula färgerna när man tänker på fotboll.
 
