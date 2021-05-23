@@ -2,17 +2,29 @@
 
 ## Beskrivning
 
+Syftet med detta projektet är att göra det lätt och smidigt och fotbollstränare att hitta och skapa övningar och träninspass. 
+
 ## Design
 
 ### Wireframes
 
+![wireframe.png](wireframe.png)
+
 ### Färgschema
+
+![färgschema](colour.png)
+
+Projektet har försökt att hålla sig till SvFF blåa och gula färger, detta för att sidan ska kännas genuin eftersom att man oftast tänker sig de blågula färgerna när man tänker på fotboll.
 
 ### Typsnitt
 
+Projektet använder sig av typsnitten "Exo2" för rubriker och underrubriker.
+
+Det använder sig av roboto när det kommer till vanlig text. 
+
 ### Logotyp
 
-### Prototyp
+![logo](icon.png)
 
 ## Fil och mappstruktur
 
@@ -147,4 +159,12 @@ Bilder lagras på servern i mappen `public/images/drills`.
 
 ## Testreslultat
 
+![benchmark](benchmark.png)
+
+Det låga "performance" beror först och främst på datorn, och för att projektet körs i "dev-mode"
+
 ## Kända problem
+
+Säkerheten på sidan är dålig. Lösernordet sparas som ren text och username sparas i sessionStorage, detta gör det möjligt att ändra username i sessionStorage så har man tillgång till vilket konto som helst. 
+
+Det går häller inte att ändra ordningen på övningarna i träningspassen, det går häller inte att lägga till och ta bort övningar ur ett träningspass.
